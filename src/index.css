@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AMPLO MARKETING DESIGN SYSTEM */
+
+@layer base {
+  :root {
+    /* AMPLO Brand Colors */
+    --navy-primary: 220 100% 16%; /* #0A1F44 */
+    --gold-accent: 45 74% 52%; /* #D4AF37 */
+    --white: 0 0% 100%; /* #FFFFFF */
+    --light-gray-bg: 210 17% 97%; /* #F8F9FA */
+    --dark-gray: 0 0% 17%; /* #2C2C2C */
+    --red-urgency: 348 75% 47%; /* #C41E3A */
+    --green-success: 140 43% 28%; /* #2D5F3F */
+    --text-primary: 0 0% 20%; /* #333333 */
+    --text-secondary: 0 0% 40%; /* #666666 */
+    
+    /* Shadcn compatibility */
+    --background: var(--white);
+    --foreground: var(--text-primary);
+    --card: var(--white);
+    --card-foreground: var(--text-primary);
+    --popover: var(--white);
+    --popover-foreground: var(--text-primary);
+    --primary: var(--navy-primary);
+    --primary-foreground: var(--white);
+    --secondary: var(--light-gray-bg);
+    --secondary-foreground: var(--navy-primary);
+    --muted: var(--light-gray-bg);
+    --muted-foreground: var(--navy-primary);
+    --accent: var(--gold-accent);
+    --accent-foreground: var(--white);
+    --destructive: var(--red-urgency);
+    --destructive-foreground: var(--white);
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: var(--navy-primary);
+    --radius: 0.5rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--navy-primary)), hsl(var(--gold-accent)));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--white)), hsl(var(--light-gray-bg)));
+    
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--navy-primary) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--gold-accent) / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  
+  h1 {
+    font-size: 2.5rem; /* 40px on mobile, larger on desktop */
+    color: hsl(var(--navy-primary));
+  }
+  
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3.5rem; /* 56px on tablet */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 4rem; /* 64px on desktop */
+    }
+  }
+  
+  h2 {
+    font-size: 1.875rem; /* 30px on mobile */
+    color: hsl(var(--navy-primary));
+  }
+  
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 2.5rem; /* 40px on tablet */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    h2 {
+      font-size: 3rem; /* 48px on desktop */
+    }
+  }
+  
+  h3 {
+    font-size: 2.25rem; /* 36px */
+    color: hsl(var(--navy-primary));
+  }
+  
+  p {
+    font-size: 1rem; /* 16px - more readable */
+    color: hsl(var(--text-primary));
+    line-height: 1.6;
+  }
+  
+  @media (min-width: 768px) {
+    p {
+      font-size: 1.125rem; /* 18px on larger screens */
+    }
+  }
+  
+  .text-small {
+    font-size: 0.875rem; /* 14px */
+    color: hsl(var(--text-primary)); /* Changed from secondary for better readability */
+  }
+}
+
+@layer components {
+  /* Primary CTA Button */
+  .btn-primary {
+    @apply bg-[hsl(var(--gold-accent))] text-white font-montserrat font-bold text-xl px-12 py-5 rounded-lg transition-all duration-300 hover:transform hover:-translate-y-1;
+    box-shadow: 0 4px 12px hsl(var(--gold-accent) / 0.3);
+  }
+  
+  .btn-primary:hover {
+    box-shadow: 0 6px 16px hsl(var(--gold-accent) / 0.4);
+  }
+  
+  /* Secondary CTA Button */
+  .btn-secondary {
+    @apply bg-transparent border-3 border-[hsl(var(--navy-primary))] text-[hsl(var(--navy-primary))] font-montserrat font-bold text-lg px-11 py-4 rounded-lg transition-all duration-300;
+  }
+  
+  .btn-secondary:hover {
+    @apply bg-[hsl(var(--navy-primary))] text-white;
+  }
+  
+  /* Section padding */
+  .section-padding {
+    @apply py-12 md:py-20 lg:py-32;
+  }
+  
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Mobile improvements */
+  @media (max-width: 768px) {
+    .container-custom {
+      @apply px-4;
+    }
+    
+    h1 {
+      font-size: 2rem !important;
+      line-height: 1.1 !important;
+    }
+    
+    h2 {
+      font-size: 1.5rem !important;
+      line-height: 1.2 !important;
+    }
+    
+    .btn-primary {
+      @apply w-full text-lg px-8 py-4;
+    }
+  }
+  
+  /* Font families */
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  /* Trust badge */
+  .trust-badge {
+    @apply text-xs text-[hsl(var(--text-secondary))] flex items-center gap-1;
+  }
+  
+  /* Countdown timer */
+  .countdown-timer {
+    @apply text-[hsl(var(--red-urgency))] font-montserrat font-bold;
+  }
+  
+  /* Pull quote */
+  .pull-quote {
+    @apply text-2xl md:text-4xl italic border-l-4 border-[hsl(var(--gold-accent))] pl-6 my-8;
+  }
+  
+  /* Card styles */
+  .card-hover {
+    @apply transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-lg;
+  }
+}
+
+@layer utilities {
+  .text-navy {
+    color: hsl(var(--navy-primary));
+  }
+  
+  .text-gold {
+    color: hsl(var(--gold-accent));
+  }
+  
+  .bg-navy {
+    background-color: hsl(var(--navy-primary));
+  }
+  
+  .bg-gold {
+    background-color: hsl(var(--gold-accent));
+  }
+  
+  .bg-light-gray {
+    background-color: hsl(var(--light-gray-bg));
+  }
+  
+  .bg-dark-gray {
+    background-color: hsl(var(--dark-gray));
+  }
+  
+  .border-gold {
+    border-color: hsl(var(--gold-accent));
+  }
+  
+  .border-navy {
+    border-color: hsl(var(--navy-primary));
+  }
+}
