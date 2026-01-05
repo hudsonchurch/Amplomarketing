@@ -38,14 +38,8 @@ const Step3 = ({ onNext, onBack }: Step3Props) => {
   ];
 
   const handleNext = () => {
-    console.log('Step 3 button clicked!');
-    console.log('Selected seriousness:', selectedSeriousness);
-    
     if (selectedSeriousness) {
-      console.log('Calling onNext with:', selectedSeriousness);
       onNext(selectedSeriousness);
-    } else {
-      console.log('No seriousness selected!');
     }
   };
 

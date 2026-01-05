@@ -42,9 +42,6 @@ const ApplicationFunnel = () => {
   };
 
   const handleStep3Next = (seriousness: string) => {
-    console.log('Step 3 Next clicked with seriousness:', seriousness);
-    console.log('Current application data:', applicationData);
-    
     setApplicationData(prev => ({ ...prev, seriousness }));
     setPendingSeriousness(seriousness);
     
@@ -53,19 +50,12 @@ const ApplicationFunnel = () => {
   };
 
   const handleTransitionComplete = () => {
-    console.log('Transition complete - determining route');
-    
     // Determine routing logic based on user answers
     const revenueLevel = applicationData.revenue;
     const seriousnessLevel = pendingSeriousness || applicationData.seriousness;
     
-    console.log('Revenue level:', revenueLevel);
-    console.log('Seriousness level:', seriousnessLevel);
-    console.log('Full application data:', applicationData);
-    
     // Route C: Not Qualified
     if (seriousnessLevel === 'exploring' || seriousnessLevel === 'curious') {
-      console.log('Route C: Not qualified - not serious enough');
       setRoute('alternative');
       setCurrentStep(9); // Alternative Offer
       return;
@@ -73,7 +63,6 @@ const ApplicationFunnel = () => {
     
     // Route C: Too early (very low revenue)
     if (revenueLevel === 'early-stage' && (seriousnessLevel === 'exploring' || seriousnessLevel === 'curious')) {
-      console.log('Route C: Too early - low revenue and not serious');
       setRoute('alternative');
       setCurrentStep(9); // Alternative Offer
       return;
@@ -82,7 +71,6 @@ const ApplicationFunnel = () => {
     // Route B: Scholarship Potential
     if ((revenueLevel === 'early-stage' || revenueLevel === 'early-growth') && 
         (seriousnessLevel === 'extremely-serious' || seriousnessLevel === 'serious')) {
-      console.log('Route B: Scholarship potential');
       setRoute('scholarship');
       setCurrentStep(5); // Value Reveal Page
       return;
@@ -93,14 +81,12 @@ const ApplicationFunnel = () => {
          revenueLevel === 'scale' || revenueLevel === 'enterprise' || 
          revenueLevel === 'enterprise-plus') && 
         (seriousnessLevel === 'extremely-serious' || seriousnessLevel === 'serious')) {
-      console.log('Route A: Qualified');
       setRoute('qualified');
       setCurrentStep(5); // Value Reveal Page
       return;
     }
     
     // Default to alternative if no clear match
-    console.log('Default: Alternative offer');
     setRoute('alternative');
     setCurrentStep(9); // Alternative Offer
   };

@@ -3,8 +3,8 @@ import { Phone } from 'lucide-react';
 
 const StickyCallButton = () => {
   const handleScheduleCall = () => {
-    // You can replace this with your actual calendar booking link
-    window.open('https://calendly.com/amplo-marketing/strategy-call', '_blank');
+    // Replace with your actual calendar booking link
+    window.open('https://calendly.com/your-calendar-link', '_blank');
   };
 
   return (
