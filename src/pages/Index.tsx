@@ -42,14 +42,9 @@ const Index = () => {
         <div className="container-custom">
           <div className="text-center space-y-8 md:space-y-12 max-w-5xl mx-auto animate-fade-in">
             {/* DEBUG: Files Updated Indicator */}
-            <div className="bg-red-500 text-white px-8 py-4 rounded-full inline-block mb-6 font-bold text-xl animate-pulse border-4 border-yellow-400">
-              🚨 FILES UPDATED v2.3 - DECEMBER 2024 - QUIZ FIXED 🚨
-            </div>
+            
             {/* Headline */}
-            <h1 className="text-hero font-apple text-[hsl(var(--text-primary))] leading-[1.05]">
-              🔥 UPDATED FILES v2.3 🔥 Tired of Agencies That Pocket Your Retainer{' '}
-              <span className="text-[hsl(var(--gold-accent))]">&</span> Deliver Mediocre Results?
-            </h1>
+            <h1 className="text-hero font-apple text-[hsl(var(--text-primary))] leading-[1.05]"> Tired of Agencies That Pocket Your Retainer & Deliver Mediocre Results?</h1>
             
             {/* Subheadline */}
             <p className="text-subheadline font-apple max-w-4xl mx-auto">
