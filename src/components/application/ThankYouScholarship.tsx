@@ -1,7 +1,13 @@
 import { Button } from '@/components/ui/button';
-import { CheckCircle, Star } from 'lucide-react';
+import { CheckCircle, Star, Phone } from 'lucide-react';
+import Testimonial from '@/components/Testimonial';
 
 const ThankYouScholarship = () => {
+  const handleScheduleCall = () => {
+    // Open Calendly in a popup for better UX
+    window.open('https://calendly.com/hudson-amplomarketing/30min', 'calendly', 'width=800,height=700,scrollbars=yes,resizable=yes');
+  };
+
   const handleEmailRedirect = () => {
     window.open('mailto:', '_blank');
   };
@@ -101,12 +107,20 @@ const ThankYouScholarship = () => {
                 <Star key={i} className="w-5 h-5 text-gold fill-current" />
               ))}
             </div>
-            <blockquote className="text-lg text-black mb-4 italic">
+            <blockquote className="text-lg text-black mb-6 italic">
               "The strategy call was incredible. They asked questions I'd never even thought about. 
               By the end, I knew EXACTLY what was broken in my business and how to fix it. I signed up on the spot."
             </blockquote>
-            <div className="font-bold text-black">— Mike T., SaaS CEO</div>
-            <div className="text-black">(Revenue: $80K/mo → $240K/mo in 120 days)</div>
+            <Testimonial
+              quote=""
+              name="Mike T."
+              title="SaaS CEO"
+              result="(Revenue: $80K/mo → $240K/mo in 120 days)"
+              photoUrl="./images/testimonials/mike-t.jpg"
+              initials="MT"
+              gradientFrom="from-green-400"
+              gradientTo="to-blue-500"
+            />
           </div>
 
           {/* Urgency Reminder */}
@@ -121,9 +135,15 @@ const ThankYouScholarship = () => {
           </div>
 
           {/* Final CTA */}
-          <Button onClick={handleEmailRedirect} className="btn-primary text-xl px-12 py-6">
-            Check My Email Now →
-          </Button>
+          <div className="space-y-4">
+            <Button onClick={handleScheduleCall} className="btn-primary text-xl px-12 py-6 w-full flex items-center justify-center gap-3">
+              <Phone className="w-6 h-6" />
+              Schedule Your Free Strategy Call →
+            </Button>
+            <p className="text-sm text-gray-600 text-center">
+              Or <button onClick={handleEmailRedirect} className="text-[hsl(var(--gold-accent))] hover:underline">check your email</button> to schedule there
+            </p>
+          </div>
         </div>
       </div>
     </div>

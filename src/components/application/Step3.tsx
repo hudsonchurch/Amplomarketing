@@ -37,10 +37,12 @@ const Step3 = ({ onNext, onBack }: Step3Props) => {
     }
   ];
 
-  const handleNext = () => {
-    if (selectedSeriousness) {
-      onNext(selectedSeriousness);
-    }
+  const handleOptionClick = (value: string) => {
+    setSelectedSeriousness(value);
+    // Auto-advance after a short delay for visual feedback
+    setTimeout(() => {
+      onNext(value);
+    }, 300);
   };
 
   return (
@@ -71,7 +73,7 @@ const Step3 = ({ onNext, onBack }: Step3Props) => {
             {seriousnessOptions.map((option) => (
               <button
                 key={option.value}
-                onClick={() => setSelectedSeriousness(option.value)}
+                onClick={() => handleOptionClick(option.value)}
                 className={`p-6 rounded-lg border-2 transition-all duration-200 text-left ${
                   selectedSeriousness === option.value
                     ? 'border-gold bg-gold/10 text-black'
@@ -89,21 +91,16 @@ const Step3 = ({ onNext, onBack }: Step3Props) => {
             ))}
           </div>
 
-          <div className="flex gap-4 justify-center">
+          <div className="flex flex-col items-center gap-4">
+            <p className="text-xs text-gray-500 text-center">
+              Click any option to see if you qualify
+            </p>
             <Button
               onClick={onBack}
               variant="outline"
-              className="px-8 py-4 text-lg"
+              className="px-8 py-3 text-sm"
             >
               ← Back
-            </Button>
-            
-            <Button
-              onClick={handleNext}
-              disabled={!selectedSeriousness}
-              className="btn-primary px-12 py-4 text-lg"
-            >
-              Show Me If I Qualify →
             </Button>
           </div>
         </div>

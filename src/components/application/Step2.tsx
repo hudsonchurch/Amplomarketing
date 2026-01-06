@@ -30,6 +30,16 @@ const Step2 = ({ onNext, onBack }: Step2Props) => {
     } else {
       setShowCustomInput(false);
       setCustomModel('');
+      // Auto-advance after a short delay for visual feedback
+      setTimeout(() => {
+        onNext(value, '');
+      }, 300);
+    }
+  };
+
+  const handleCustomSubmit = () => {
+    if (selectedModel === 'other' && customModel.trim()) {
+      onNext(selectedModel, customModel);
     }
   };
 
@@ -83,31 +93,37 @@ const Step2 = ({ onNext, onBack }: Step2Props) => {
           </div>
 
           {showCustomInput && (
-            <div className="mb-8">
+            <div className="mb-8 space-y-4">
               <Input
                 placeholder="Tell us more about your business..."
                 value={customModel}
                 onChange={(e) => setCustomModel(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleCustomSubmit()}
                 className="text-center text-lg p-4"
               />
+              <Button
+                onClick={handleCustomSubmit}
+                disabled={!customModel.trim()}
+                className="btn-primary px-8 py-3"
+              >
+                Continue →
+              </Button>
             </div>
           )}
 
-          <div className="flex gap-4 justify-center">
+          {!showCustomInput && (
+            <p className="text-xs text-gray-500 text-center mb-4">
+              Click any option to continue
+            </p>
+          )}
+          
+          <div className="flex justify-center">
             <Button
               onClick={onBack}
               variant="outline"
-              className="px-8 py-4 text-lg"
+              className="px-8 py-3 text-sm"
             >
               ← Back
-            </Button>
-            
-            <Button
-              onClick={handleNext}
-              disabled={!canProceed}
-              className="btn-primary px-12 py-4 text-lg"
-            >
-              Next →
             </Button>
           </div>
         </div>

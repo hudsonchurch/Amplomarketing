@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Step1 from '@/components/application/Step1';
 import Step2 from '@/components/application/Step2';
 import Step3 from '@/components/application/Step3';
@@ -26,6 +26,11 @@ const ApplicationFunnel = () => {
   });
   const [route, setRoute] = useState<'qualified' | 'scholarship' | 'alternative' | null>(null);
   const [pendingSeriousness, setPendingSeriousness] = useState<string>('');
+
+  // Auto-scroll to top when step changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentStep]);
 
   const handleStep1Next = (revenue: string) => {
     setApplicationData(prev => ({ ...prev, revenue }));

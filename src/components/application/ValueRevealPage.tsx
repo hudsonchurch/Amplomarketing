@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import Testimonial from '@/components/Testimonial';
 import { 
   Target, 
   Phone, 
@@ -18,6 +19,10 @@ interface ValueRevealPageProps {
 }
 
 const ValueRevealPage = ({ onContinue, onGetResources }: ValueRevealPageProps) => {
+  const handleScheduleCall = () => {
+    // Open Calendly in a popup for better UX
+    window.open('https://calendly.com/hudson-amplomarketing/30min', 'calendly', 'width=800,height=700,scrollbars=yes,resizable=yes');
+  };
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   const valueElements = [
@@ -189,27 +194,42 @@ const ValueRevealPage = ({ onContinue, onGetResources }: ValueRevealPageProps) =
                     <Star key={i} className="w-6 h-6 text-[hsl(var(--gold-accent))] fill-current" />
                   ))}
                 </div>
-                <blockquote className="text-lg md:text-xl font-apple text-[hsl(var(--text-primary))] mb-4 italic">
+                <blockquote className="text-lg md:text-xl font-apple text-[hsl(var(--text-primary))] mb-6 italic">
                   "Weekly calls, Slack access, live dashboards, month-to-month terms—they actually DO what other agencies promise. Revenue up 311% in 90 days."
                 </blockquote>
-                <div className="font-apple font-semibold text-[hsl(var(--text-primary))]">
-                  — Sarah K., E-Commerce Founder
-                </div>
+                <Testimonial
+                  quote=""
+                  name="Sarah K."
+                  title="E-Commerce Founder"
+                  photoUrl="./images/testimonials/sarah-k.jpg"
+                  initials="SK"
+                  gradientFrom="from-blue-400"
+                  gradientTo="to-purple-500"
+                />
               </CardContent>
             </Card>
           </div>
 
           {/* CTA After Testimonial */}
-          <div className="text-center">
-            <Button 
-              onClick={onContinue}
-              variant="outline"
-              className="border-2 border-[hsl(var(--gold-accent))] text-[hsl(var(--gold-accent))] hover:bg-[hsl(var(--gold-accent))] hover:text-[hsl(var(--navy-primary))] font-apple font-semibold text-lg px-10 py-4 rounded-full bg-transparent"
-            >
-              I Want Results Like This →
-            </Button>
-            <p className="font-apple text-white/70 mt-2 text-sm">
-              Skip to application - 2 minutes to qualify
+          <div className="text-center space-y-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                onClick={onContinue}
+                variant="outline"
+                className="border-2 border-[hsl(var(--gold-accent))] text-[hsl(var(--gold-accent))] hover:bg-[hsl(var(--gold-accent))] hover:text-[hsl(var(--navy-primary))] font-apple font-semibold text-lg px-10 py-4 rounded-full bg-transparent"
+              >
+                I Want Results Like This →
+              </Button>
+              <Button 
+                onClick={handleScheduleCall}
+                className="bg-white text-[hsl(var(--navy-primary))] hover:bg-white/90 font-apple font-semibold text-lg px-10 py-4 rounded-full flex items-center gap-2"
+              >
+                <Phone className="w-5 h-5" />
+                Skip to Strategy Call
+              </Button>
+            </div>
+            <p className="font-apple text-white/70 text-sm">
+              Apply first (2 min) or schedule call directly
             </p>
           </div>
 

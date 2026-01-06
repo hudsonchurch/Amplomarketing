@@ -175,7 +175,7 @@ const SimplifiedApplication = ({ route, onSubmit, onBack, userAnswers }: Simplif
                       Your Name *
                     </label>
                     <Input
-                      placeholder="John Smith"
+                      placeholder=""
                       value={formData.name}
                       onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                       className="font-apple"
@@ -189,7 +189,7 @@ const SimplifiedApplication = ({ route, onSubmit, onBack, userAnswers }: Simplif
                     </label>
                     <Input
                       type="email"
-                      placeholder="john@company.com"
+                      placeholder=""
                       value={formData.email}
                       onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                       className="font-apple"
@@ -203,7 +203,7 @@ const SimplifiedApplication = ({ route, onSubmit, onBack, userAnswers }: Simplif
                     </label>
                     <Input
                       type="tel"
-                      placeholder="+1 (555) 123-4567"
+                      placeholder=""
                       value={formData.phone}
                       onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
                       className="font-apple"
@@ -216,7 +216,7 @@ const SimplifiedApplication = ({ route, onSubmit, onBack, userAnswers }: Simplif
                       Company Name *
                     </label>
                     <Input
-                      placeholder="Acme Co"
+                      placeholder=""
                       value={formData.company}
                       onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
                       className="font-apple"
@@ -230,7 +230,7 @@ const SimplifiedApplication = ({ route, onSubmit, onBack, userAnswers }: Simplif
                     </label>
                     <Input
                       type="url"
-                      placeholder="https://yourwebsite.com"
+                      placeholder=""
                       value={formData.website}
                       onChange={(e) => setFormData(prev => ({ ...prev, website: e.target.value }))}
                       className="font-apple"
@@ -313,7 +313,7 @@ const SimplifiedApplication = ({ route, onSubmit, onBack, userAnswers }: Simplif
                     Why now? What's pushing you to fix your marketing? *
                   </label>
                   <Textarea
-                    placeholder="E.g., 'Revenue has been flat for 6 months and I need predictable growth to hire and scale.'"
+                    placeholder=""
                     value={formData.whyNow}
                     onChange={(e) => setFormData(prev => ({ ...prev, whyNow: e.target.value }))}
                     rows={3}
@@ -340,7 +340,7 @@ const SimplifiedApplication = ({ route, onSubmit, onBack, userAnswers }: Simplif
                       Why should we invest in YOUR growth? *
                     </label>
                     <Textarea
-                      placeholder="Tell us what makes your business special and why you're going to crush it with our help."
+                      placeholder=""
                       value={formData.whyInvest}
                       onChange={(e) => setFormData(prev => ({ ...prev, whyInvest: e.target.value }))}
                       rows={3}
@@ -354,7 +354,7 @@ const SimplifiedApplication = ({ route, onSubmit, onBack, userAnswers }: Simplif
                       What would you do with the money you save? *
                     </label>
                     <Textarea
-                      placeholder="E.g., 'Reinvest into more ad spend,' 'Hire my first employee,' 'Buy inventory to scale faster'"
+                      placeholder=""
                       value={formData.useOfSavings}
                       onChange={(e) => setFormData(prev => ({ ...prev, useOfSavings: e.target.value }))}
                       rows={2}

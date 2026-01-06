@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Navigation from '@/components/Navigation';
 import CountdownTimer from '@/components/CountdownTimer';
+import Testimonial from '@/components/Testimonial';
 import { CheckCircle, X, AlertTriangle, Target, DollarSign, TrendingUp, Users, Star, Play, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 const Index = () => {
@@ -10,14 +11,7 @@ const Index = () => {
   const goToApplication = () => {
     navigate('/apply');
   };
-  const scrollToApply = () => {
-    const element = document.getElementById('apply');
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
-  };
+
   const scrollToProof = () => {
     const element = document.getElementById('proof');
     if (element) {
@@ -570,12 +564,20 @@ const Index = () => {
                   
                   <div className="bg-light-gray p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-4">IN SARAH'S WORDS:</h4>
-                    <blockquote className="italic text-black mb-4">
+                    <blockquote className="italic text-black mb-6">
                       "I'd fired 2 agencies before Amplo. I was ready to give up on paid ads entirely. 
                       Within 60 days, they'd turned my business into a machine. I went from struggling to pay myself 
                       to hiring 3 full-time employees. I literally cried when I saw my revenue dashboard hit $200K for the first time."
                     </blockquote>
-                    <div className="font-bold">— Sarah K., Founder</div>
+                    <Testimonial
+                      quote=""
+                      name="Sarah K."
+                      title="Founder"
+                      photoUrl="./images/testimonials/sarah-k.jpg"
+                      initials="SK"
+                      gradientFrom="from-pink-400"
+                      gradientTo="to-purple-500"
+                    />
                   </div>
                 </div>
               </CardContent>
@@ -618,12 +620,20 @@ const Index = () => {
                   
                   <div className="bg-light-gray p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-4">IN MIKE'S WORDS:</h4>
-                    <blockquote className="italic text-black mb-4">
+                    <blockquote className="italic text-black mb-6">
                       "Amplo didn't just get us leads—they gave me my life back. I was drowning in manual sales processes. 
                       Now we have a system that runs itself. We just closed our Series A because investors finally saw 
                       predictable, scalable growth."
                     </blockquote>
-                    <div className="font-bold">— Mike T., CEO</div>
+                    <Testimonial
+                      quote=""
+                      name="Mike T."
+                      title="CEO"
+                      photoUrl="./images/testimonials/mike-t.jpg"
+                      initials="MT"
+                      gradientFrom="from-blue-400"
+                      gradientTo="to-green-500"
+                    />
                   </div>
                 </div>
               </CardContent>
@@ -661,10 +671,17 @@ const Index = () => {
                   <div className="flex mb-4">
                     {[...Array(testimonial.stars)].map((_, i) => <Star key={i} className="w-5 h-5 text-gold fill-current" />)}
                   </div>
-                  <blockquote className="italic text-black mb-4">
+                  <blockquote className="italic text-black mb-6">
                     "{testimonial.quote}"
                   </blockquote>
-                  <div className="font-bold text-sm text-black">— {testimonial.author}</div>
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${index === 0 ? 'from-pink-400 to-purple-500' : index === 1 ? 'from-blue-500 to-cyan-400' : index === 2 ? 'from-purple-500 to-pink-400' : index === 3 ? 'from-green-500 to-emerald-400' : index === 4 ? 'from-orange-500 to-red-400' : 'from-indigo-500 to-blue-400'} flex items-center justify-center text-white font-bold text-sm`}>
+                      {testimonial.author.split(' ')[0][0]}{testimonial.author.split(' ')[1] ? testimonial.author.split(' ')[1][0] : testimonial.author.split(' ')[0][1]}
+                    </div>
+                    <div className="text-left">
+                      <div className="font-bold text-sm text-black">{testimonial.author}</div>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>)}
           </div>

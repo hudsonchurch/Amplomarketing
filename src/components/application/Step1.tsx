@@ -19,10 +19,12 @@ const Step1 = ({ onNext }: Step1Props) => {
     { value: 'enterprise-plus', label: '$1M+/month', range: '$1M+' }
   ];
 
-  const handleNext = () => {
-    if (selectedRevenue) {
-      onNext(selectedRevenue);
-    }
+  const handleOptionClick = (value: string) => {
+    setSelectedRevenue(value);
+    // Auto-advance after a short delay for visual feedback
+    setTimeout(() => {
+      onNext(value);
+    }, 300);
   };
 
   return (
@@ -57,7 +59,7 @@ const Step1 = ({ onNext }: Step1Props) => {
             {revenueOptions.map((option) => (
               <button
                 key={option.value}
-                onClick={() => setSelectedRevenue(option.value)}
+                onClick={() => handleOptionClick(option.value)}
                 className={`p-4 rounded-lg border-2 transition-all duration-200 text-left ${
                   selectedRevenue === option.value
                     ? 'border-gold bg-gold/10 text-black'
@@ -73,13 +75,9 @@ const Step1 = ({ onNext }: Step1Props) => {
             Don't worry—there's no "wrong" answer. We work with businesses at different stages.
           </p>
 
-          <Button
-            onClick={handleNext}
-            disabled={!selectedRevenue}
-            className="btn-primary px-12 py-4 text-lg"
-          >
-            Next →
-          </Button>
+          <p className="text-xs text-gray-500 text-center">
+            Click any option to continue
+          </p>
         </div>
       </div>
     </div>
