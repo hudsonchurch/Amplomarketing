@@ -9,7 +9,7 @@ interface ThankYouApprovedProps {
 const ThankYouApproved = ({ businessModel }: ThankYouApprovedProps) => {
   const handleScheduleCall = () => {
     // Open Calendly in a popup for better UX
-    window.open('https://calendly.com/hudson-amplomarketing/30min', 'calendly', 'width=800,height=700,scrollbars=yes,resizable=yes');
+    window.open('https://calendly.com/brody-amplomarketing/30min?month=2026-01', 'calendly', 'width=800,height=700,scrollbars=yes,resizable=yes');
   };
 
   const handleEmailRedirect = () => {
@@ -74,6 +74,16 @@ const ThankYouApproved = ({ businessModel }: ThankYouApprovedProps) => {
                     <li>• Answer all your questions</li>
                   </ul>
                   <p className="text-black mt-2 font-semibold">No pitch. No pressure. Just real talk.</p>
+                  
+                  {/* Second Schedule Call Button */}
+                  <div className="mt-6">
+                    <Button
+                      onClick={handleScheduleCall}
+                      className="btn-primary px-8 py-3 text-lg"
+                    >
+                      Schedule Your Free Strategy Call
+                    </Button>
+                  </div>
                 </div>
               </div>
 

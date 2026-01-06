@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Input } from '@/components/ui/input';
+import { useNavigate } from 'react-router-dom';
+import { Home } from 'lucide-react';
 
 interface Step2Props {
   onNext: (businessModel: string, customModel?: string) => void;
@@ -10,6 +12,7 @@ interface Step2Props {
 
 const Step2 = ({ onNext, onBack }: Step2Props) => {
   const [selectedModel, setSelectedModel] = useState<string>('');
+  const navigate = useNavigate();
   const [customModel, setCustomModel] = useState<string>('');
   const [showCustomInput, setShowCustomInput] = useState(false);
 
@@ -52,7 +55,20 @@ const Step2 = ({ onNext, onBack }: Step2Props) => {
   const canProceed = selectedModel && (selectedModel !== 'other' || customModel.trim());
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col relative">
+      {/* Home Button */}
+      <div className="absolute top-4 left-4 z-10">
+        <Button
+          onClick={() => navigate('/')}
+          variant="outline"
+          size="sm"
+          className="flex items-center gap-2"
+        >
+          <Home className="w-4 h-4" />
+          Home
+        </Button>
+      </div>
+      
       {/* Progress Bar */}
       <div className="w-full bg-white border-b border-gray-100 py-4">
         <div className="container-custom">

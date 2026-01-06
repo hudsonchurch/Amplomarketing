@@ -21,7 +21,7 @@ interface ValueRevealPageProps {
 const ValueRevealPage = ({ onContinue, onGetResources }: ValueRevealPageProps) => {
   const handleScheduleCall = () => {
     // Open Calendly in a popup for better UX
-    window.open('https://calendly.com/hudson-amplomarketing/30min', 'calendly', 'width=800,height=700,scrollbars=yes,resizable=yes');
+    window.open('https://calendly.com/brody-amplomarketing/30min?month=2026-01', 'calendly', 'width=800,height=700,scrollbars=yes,resizable=yes');
   };
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 

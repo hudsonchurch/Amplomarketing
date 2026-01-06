@@ -5,7 +5,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Progress } from '@/components/ui/progress';
-import { Star, CheckCircle, Clock, Lock } from 'lucide-react';
+import { Star, CheckCircle, Clock, Lock, Home } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface SimplifiedApplicationProps {
   route: 'qualified' | 'scholarship';
@@ -19,6 +20,7 @@ interface SimplifiedApplicationProps {
 }
 
 const SimplifiedApplication = ({ route, onSubmit, onBack, userAnswers }: SimplifiedApplicationProps) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     // Basic Info
     name: '',
@@ -54,7 +56,20 @@ const SimplifiedApplication = ({ route, onSubmit, onBack, userAnswers }: Simplif
                      (route !== 'scholarship' || (formData.whyInvest && formData.useOfSavings));
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white relative">
+      {/* Home Button */}
+      <div className="absolute top-4 left-4 z-10">
+        <Button
+          onClick={() => navigate('/')}
+          variant="outline"
+          size="sm"
+          className="flex items-center gap-2"
+        >
+          <Home className="w-4 h-4" />
+          Home
+        </Button>
+      </div>
+      
       {/* Progress Bar */}
       <div className="w-full bg-white border-b border-[hsl(var(--border-subtle))] py-6">
         <div className="container-custom">

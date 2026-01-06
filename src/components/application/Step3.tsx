@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { useNavigate } from 'react-router-dom';
+import { Home } from 'lucide-react';
 
 interface Step3Props {
   onNext: (seriousness: string) => void;
@@ -9,6 +11,7 @@ interface Step3Props {
 
 const Step3 = ({ onNext, onBack }: Step3Props) => {
   const [selectedSeriousness, setSelectedSeriousness] = useState<string>('');
+  const navigate = useNavigate();
 
   const seriousnessOptions = [
     {
@@ -46,7 +49,20 @@ const Step3 = ({ onNext, onBack }: Step3Props) => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col relative">
+      {/* Home Button */}
+      <div className="absolute top-4 left-4 z-10">
+        <Button
+          onClick={() => navigate('/')}
+          variant="outline"
+          size="sm"
+          className="flex items-center gap-2"
+        >
+          <Home className="w-4 h-4" />
+          Home
+        </Button>
+      </div>
+      
       {/* Progress Bar */}
       <div className="w-full bg-white border-b border-gray-100 py-4">
         <div className="container-custom">

@@ -8,6 +8,7 @@ import SimplifiedApplication from '@/components/application/SimplifiedApplicatio
 import ThankYouApproved from '@/components/application/ThankYouApproved';
 import ThankYouScholarship from '@/components/application/ThankYouScholarship';
 import AlternativeOffer from '@/components/application/AlternativeOffer';
+import ScholarshipCalendly from '@/components/application/ScholarshipCalendly';
 
 interface ApplicationData {
   revenue: string;
@@ -73,11 +74,11 @@ const ApplicationFunnel = () => {
       return;
     }
     
-    // Route B: Scholarship Potential
+    // Route B: Scholarship Potential - Go directly to Calendly
     if ((revenueLevel === 'early-stage' || revenueLevel === 'early-growth') && 
         (seriousnessLevel === 'extremely-serious' || seriousnessLevel === 'serious')) {
       setRoute('scholarship');
-      setCurrentStep(5); // Value Reveal Page
+      setCurrentStep(10); // Scholarship Calendly Page
       return;
     }
     
@@ -164,6 +165,9 @@ const ApplicationFunnel = () => {
       
       case 9:
         return <AlternativeOffer />;
+      
+      case 10:
+        return <ScholarshipCalendly />;
       
       default:
         return <Step1 onNext={handleStep1Next} />;

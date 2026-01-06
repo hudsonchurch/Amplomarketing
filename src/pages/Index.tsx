@@ -11,7 +11,6 @@ const Index = () => {
   const goToApplication = () => {
     navigate('/apply');
   };
-
   const scrollToProof = () => {
     const element = document.getElementById('proof');
     if (element) {
@@ -38,32 +37,28 @@ const Index = () => {
             {/* DEBUG: Files Updated Indicator */}
             
             {/* Headline */}
-            <h1 className="text-hero font-apple text-[hsl(var(--text-primary))] leading-[1.05]"> Tired of Agencies That Pocket Your Retainer & Deliver Mediocre Results?</h1>
+            <h1 className="text-hero font-apple text-[hsl(var(--text-primary))] leading-[1.05]"> Tired of Agencies That Pocket Your Retainer <span className="text-[hsl(var(--gold-accent))]"> & </span> Deliver Mediocre Results?</h1>
             
             {/* Subheadline */}
-            <p className="text-subheadline font-apple max-w-4xl mx-auto">
-                Most marketing agencies collect their $5K/month and hope you don't notice the leads never come. 
-                <span className="font-semibold text-[hsl(var(--text-primary))]"> We're not most agencies.</span> Full-funnel ownership. 
-                Real growth. Month-to-month. You walk if we don't deliver.
-              </p>
+            <p className="text-subheadline font-apple max-w-4xl mx-auto">Most marketing agencies collect their $5K/month and hope you don't notice the leads never come... We're not most agencies. Full-funnel managment.Real growth. Month-to-month. You walk if we don't deliver.</p>
               
             {/* Trust Stack */}
             <div className="space-y-4 text-left max-w-3xl mx-auto">
               <div className="flex items-center gap-4">
                 <CheckCircle className="text-[hsl(var(--green-success))] w-6 h-6 flex-shrink-0" />
-                <span className="font-apple font-medium text-[hsl(var(--text-primary))]"><span className="font-semibold">30M+ Views Generated</span> in Last 90 Days (We Know Organic + Paid)</span>
+                <span className="font-semibold text-[rgb(0,0,0)]"><span className="font-semibold text-[rgb(0,0,0)]">30M+ Views Generated</span> in Last 90 Days (We Know Organic + Paid)</span>
               </div>
               <div className="flex items-center gap-4">
                 <CheckCircle className="text-[hsl(var(--green-success))] w-6 h-6 flex-shrink-0" />
-                <span className="font-apple font-medium text-[hsl(var(--text-primary))]"><span className="font-semibold">Month-to-Month Only</span> (No 12-Month Prison Sentences)</span>
+                <span className="font-apple font-medium text-[hsl(var(--text-primary))]"><span className="font-semibold text-[hsl(var(--gold-accent))]">Month-to-Month Only</span> (No 12-Month Prison Sentences)</span>
               </div>
               <div className="flex items-center gap-4">
                 <CheckCircle className="text-[hsl(var(--green-success))] w-6 h-6 flex-shrink-0" />
-                <span className="font-apple font-medium text-[hsl(var(--text-primary))]"><span className="font-semibold">You Own Everything</span> (Accounts, Creative, Data—Forever)</span>
+                <span className="font-apple font-medium text-[hsl(var(--text-primary))]"><span className="font-semibold text-[hsl(var(--gold-accent))]">You Own Everything</span> (Accounts, Creative, Data—Forever)</span>
               </div>
               <div className="flex items-center gap-4">
                 <CheckCircle className="text-[hsl(var(--green-success))] w-6 h-6 flex-shrink-0" />
-                <span className="font-apple font-medium text-[hsl(var(--text-primary))]"><span className="font-semibold">30-Day Out Clause</span> (Walk If We Don't Perform)</span>
+                <span className="font-semibold text-[rgb(0,0,0)]"><span className="font-semibold text-[rgb(0,0,0)]">30-Day Out Clause</span> (Walk If We Don't Perform)</span>
               </div>
             </div>
               
@@ -112,7 +107,7 @@ const Index = () => {
               <h3 className="text-2xl font-bold text-black">Sound familiar?</h3>
               
               <p>Here's what actually happened:</p>
-              <p className="font-bold text-xl">They never cared about your outcome.</p>
+              <p className="font-bold text-xl">They never cared about <span className="text-[hsl(var(--gold-accent))]">your outcome.</span></p>
               <p>
                 They cared about their retainer. Their MRR. Their revenue targets. You were a line item. 
                 A subscription. A number in their CRM that auto-renewed every month.
@@ -243,10 +238,7 @@ const Index = () => {
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <h2 className="font-montserrat font-bold text-[rgb(255,255,255)]">
-                We Don't Do 'A Little Bit of Everything.' 
-                We Own Your Entire Revenue Engine.
-              </h2>
+              <h2 className="font-montserrat font-bold text-[rgb(255,255,255)]">We Don't Do 'A Little Bit of Everything.' We Do Your Entire Revenue Engine.</h2>
               
               <p className="text-xl text-gold">
                 Most agencies are like mechanics who only fix transmissions. When your engine fails, 
@@ -255,9 +247,7 @@ const Index = () => {
               </p>
               
               <div className="text-center">
-                <h3 className="text-xl md:text-2xl font-bold text-gold border-b-4 border-gold inline-block pb-2">
-                  This is Full-Funnel Ownership™
-                </h3>
+                <h3 className="text-xl md:text-2xl font-bold text-gold border-b-4 border-gold inline-block pb-2">This is Full-Funnel Accountability™</h3>
               </div>
               
               <div className="space-y-6">
@@ -277,9 +267,7 @@ const Index = () => {
                   <li>• The creative says the targeting is off</li>
                 </ul>
                 
-                <p className="text-xl font-bold text-gold">
-                  Round and round. Nobody owns the outcome. YOU pay for all of it.
-                </p>
+                <p className="text-xl font-bold text-gold">Round and round. Nobody owns the outcome. YOU pay for all of it. We don't want that for you...</p>
               </div>
             </div>
             
@@ -569,15 +557,7 @@ const Index = () => {
                       Within 60 days, they'd turned my business into a machine. I went from struggling to pay myself 
                       to hiring 3 full-time employees. I literally cried when I saw my revenue dashboard hit $200K for the first time."
                     </blockquote>
-                    <Testimonial
-                      quote=""
-                      name="Sarah K."
-                      title="Founder"
-                      photoUrl="./images/testimonials/sarah-k.jpg"
-                      initials="SK"
-                      gradientFrom="from-pink-400"
-                      gradientTo="to-purple-500"
-                    />
+                    <Testimonial quote="" name="Sarah K." title="Founder" photoUrl="./images/testimonials/sarah-k.jpg" initials="SK" gradientFrom="from-pink-400" gradientTo="to-purple-500" />
                   </div>
                 </div>
               </CardContent>
@@ -625,15 +605,7 @@ const Index = () => {
                       Now we have a system that runs itself. We just closed our Series A because investors finally saw 
                       predictable, scalable growth."
                     </blockquote>
-                    <Testimonial
-                      quote=""
-                      name="Mike T."
-                      title="CEO"
-                      photoUrl="./images/testimonials/mike-t.jpg"
-                      initials="MT"
-                      gradientFrom="from-blue-400"
-                      gradientTo="to-green-500"
-                    />
+                    <Testimonial quote="" name="Mike T." title="CEO" photoUrl="./images/testimonials/mike-t.jpg" initials="MT" gradientFrom="from-blue-400" gradientTo="to-green-500" />
                   </div>
                 </div>
               </CardContent>
@@ -695,7 +667,7 @@ const Index = () => {
       </section>
       
       {/* FINAL CTA SECTION */}
-      <section id="apply" className="section-padding bg-navy text-white">
+      <section className="section-padding bg-navy text-white">
         <div className="container-custom text-center">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-montserrat font-bold mb-8">
             Partnership Deadline: Only 5 Spots Left for Q1 2026
@@ -710,7 +682,7 @@ const Index = () => {
           
           {/* Value Recap */}
           <div className="max-w-3xl mx-auto mb-12">
-            <h3 className="text-2xl font-bold mb-8">When You Partner With Amplo, You Get:</h3>
+            <h3 className="text-2xl font-bold mb-8">When You Partner With <span className="text-[hsl(var(--gold-accent))]">Amplo</span>, You Get:</h3>
             <div className="grid md:grid-cols-2 gap-4 text-left">
               {["Full-Funnel Ownership (traffic → leads → sales → revenue)", "30M+ Views Worth of Expertise (organic + paid mastery)", "Month-to-Month Terms (no 12-month prison sentences)", "Real-Time Transparency (live dashboards, weekly calls)", "Senior Team (not 23-year-old account managers)", "87% Success Rate (vs. 20-30% industry average)", "30-Day Out Clause (walk if we don't perform—zero risk)", "You Own Everything (accounts, creative, data—forever)"].map((benefit, index) => <div key={index} className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-gold mt-1 flex-shrink-0" />

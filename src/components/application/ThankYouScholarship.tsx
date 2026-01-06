@@ -5,7 +5,7 @@ import Testimonial from '@/components/Testimonial';
 const ThankYouScholarship = () => {
   const handleScheduleCall = () => {
     // Open Calendly in a popup for better UX
-    window.open('https://calendly.com/hudson-amplomarketing/30min', 'calendly', 'width=800,height=700,scrollbars=yes,resizable=yes');
+    window.open('https://calendly.com/brody-amplomarketing/30min?month=2026-01', 'calendly', 'width=800,height=700,scrollbars=yes,resizable=yes');
   };
 
   const handleEmailRedirect = () => {
@@ -45,6 +45,16 @@ const ThankYouScholarship = () => {
                     <strong>If you qualify for the scholarship:</strong><br />
                     We'll email you with confirmation + calendar link for your strategy call
                   </p>
+                  
+                  {/* Second Schedule Call Button */}
+                  <div className="mt-4">
+                    <Button
+                      onClick={handleScheduleCall}
+                      className="btn-primary px-6 py-2 text-sm"
+                    >
+                      Or Schedule Call Now
+                    </Button>
+                  </div>
                 </div>
               </div>
 
