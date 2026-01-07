@@ -2,25 +2,101 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
+import { supabase } from '@/integrations/supabase/client';
 
 const AlternativeOffer = () => {
   const [caseStudyForm, setCaseStudyForm] = useState({ email: '', name: '' });
   const [courseForm, setCourseForm] = useState({ email: '', name: '' });
   const [caseStudySubmitted, setCaseStudySubmitted] = useState(false);
   const [courseSubmitted, setCourseSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleCaseStudySubmit = (e: React.FormEvent) => {
+  const handleCaseStudySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle case study form submission
-    console.log('Case study form:', caseStudyForm);
-    setCaseStudySubmitted(true);
+    
+    // Validate email
+    if (!caseStudyForm.email) {
+      alert('Please enter your email address.');
+      return;
+    }
+    
+    if (!caseStudyForm.email.includes('@')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    
+    setIsLoading(true);
+    try {
+      console.log('Sending email to:', caseStudyForm.email);
+      
+      const { data, error } = await supabase.functions.invoke('email_capture_correct_domain_2026_01_06_19_18', {
+        body: { email: caseStudyForm.email }
+      });
+      
+      console.log('Response:', { data, error });
+      
+      if (error) {
+        console.error('Supabase function error:', error);
+        throw new Error(error.message || 'Failed to send email');
+      }
+      
+      if (data && data.error) {
+        console.error('Function returned error:', data.error);
+        throw new Error(data.error);
+      }
+      
+      setCaseStudySubmitted(true);
+      console.log('Email sent successfully!');
+    } catch (error: any) {
+      console.error('Error sending email:', error);
+      alert(`Sorry, there was an error: ${error.message}. Please try again or contact support.`);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const handleCourseSubmit = (e: React.FormEvent) => {
+  const handleCourseSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle course form submission
-    console.log('Course form:', courseForm);
-    setCourseSubmitted(true);
+    
+    // Validate email
+    if (!courseForm.email) {
+      alert('Please enter your email address.');
+      return;
+    }
+    
+    if (!courseForm.email.includes('@')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    
+    setIsLoading(true);
+    try {
+      console.log('Sending email to:', courseForm.email);
+      
+      const { data, error } = await supabase.functions.invoke('email_capture_correct_domain_2026_01_06_19_18', {
+        body: { email: courseForm.email }
+      });
+      
+      console.log('Response:', { data, error });
+      
+      if (error) {
+        console.error('Supabase function error:', error);
+        throw new Error(error.message || 'Failed to send email');
+      }
+      
+      if (data && data.error) {
+        console.error('Function returned error:', data.error);
+        throw new Error(data.error);
+      }
+      
+      setCourseSubmitted(true);
+      console.log('Email sent successfully!');
+    } catch (error: any) {
+      console.error('Error sending email:', error);
+      alert(`Sorry, there was an error: ${error.message}. Please try again or contact support.`);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleReApply = () => {
@@ -108,8 +184,8 @@ const AlternativeOffer = () => {
                       />
                     </div>
                     
-                    <Button type="submit" className="btn-primary w-full py-3">
-                      Send Me the Case Study →
+                    <Button type="submit" className="btn-primary w-full py-3" disabled={isLoading}>
+                      {isLoading ? 'Sending...' : 'Send Me the Case Study →'}
                     </Button>
                   </form>
                 ) : (
@@ -169,8 +245,8 @@ const AlternativeOffer = () => {
                       />
                     </div>
                     
-                    <Button type="submit" className="btn-primary w-full py-3">
-                      Start the Free Course →
+                    <Button type="submit" className="btn-primary w-full py-3" disabled={isLoading}>
+                      {isLoading ? 'Sending...' : 'Start the Free Course →'}
                     </Button>
                   </form>
                 ) : (

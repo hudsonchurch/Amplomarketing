@@ -9,6 +9,7 @@ import ThankYouApproved from '@/components/application/ThankYouApproved';
 import ThankYouScholarship from '@/components/application/ThankYouScholarship';
 import AlternativeOffer from '@/components/application/AlternativeOffer';
 import ScholarshipCalendly from '@/components/application/ScholarshipCalendly';
+import QualifiedCalendly from '@/components/application/QualifiedCalendly';
 
 interface ApplicationData {
   revenue: string;
@@ -98,7 +99,11 @@ const ApplicationFunnel = () => {
   };
 
   const handleValueRevealContinue = () => {
-    setCurrentStep(6); // Simplified Application Form
+    if (route === 'qualified') {
+      setCurrentStep(11); // Qualified Calendly Page with FAQ
+    } else {
+      setCurrentStep(6); // Simplified Application Form (for other routes)
+    }
   };
 
   const handleValueRevealResources = () => {
@@ -140,6 +145,7 @@ const ApplicationFunnel = () => {
           <ValueRevealPage 
             onContinue={handleValueRevealContinue}
             onGetResources={handleValueRevealResources}
+            route={route}
           />
         );
       
@@ -168,6 +174,9 @@ const ApplicationFunnel = () => {
       
       case 10:
         return <ScholarshipCalendly />;
+      
+      case 11:
+        return <QualifiedCalendly />;
       
       default:
         return <Step1 onNext={handleStep1Next} />;

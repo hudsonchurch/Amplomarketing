@@ -107,7 +107,7 @@ const FullApplication = ({ route, onSubmit, onBack }: FullApplicationProps) => {
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="text-green-500">✅</span>
-                      <span>No pitch, no pressure—just real talk</span>
+                      <span>No pitch, no pressure-just real talk</span>
                     </div>
                   </div>
                 </div>
@@ -124,7 +124,7 @@ const FullApplication = ({ route, onSubmit, onBack }: FullApplicationProps) => {
                   "The application process was so easy. Within 48 hours, I had my strategy call booked. 
                   Within 2 weeks, we were live. Best decision I made for my business."
                 </blockquote>
-                <div className="font-bold text-black">— Sarah K., E-Commerce Founder</div>
+                <div className="font-bold text-black">- Sarah K., E-Commerce Founder</div>
               </div>
 
               {/* Guarantee */}
@@ -180,7 +180,7 @@ const FullApplication = ({ route, onSubmit, onBack }: FullApplicationProps) => {
                         required
                       />
                       <p className="text-sm text-black mt-1">
-                        (We'll text you updates—way faster than email)
+                        (We'll text you updates-way faster than email)
                       </p>
                     </div>
                     
@@ -281,7 +281,7 @@ const FullApplication = ({ route, onSubmit, onBack }: FullApplicationProps) => {
                         <SelectItem value="scale">$6,000-$8,000/month (Scale)</SelectItem>
                         <SelectItem value="domination">$9,000-$10,000/month (Domination)</SelectItem>
                         <SelectItem value="scholarship">Hoping to qualify for Founder's Scholarship (50% off)</SelectItem>
-                        <SelectItem value="unsure">Not sure—tell me more on the call</SelectItem>
+                        <SelectItem value="unsure">Not sure-tell me more on the call</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>

@@ -144,7 +144,7 @@ const EnhancedApplication = ({ route, onSubmit, onBack, userAnswers }: EnhancedA
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-[hsl(var(--green-success))] mt-0.5 flex-shrink-0" />
-                    <span className="font-apple text-[hsl(var(--text-primary))]">No pitch, no pressure—just real talk about growth</span>
+                    <span className="font-apple text-[hsl(var(--text-primary))]">No pitch, no pressure-just real talk about growth</span>
                   </div>
                 </div>
               </div>
@@ -160,7 +160,7 @@ const EnhancedApplication = ({ route, onSubmit, onBack, userAnswers }: EnhancedA
                   "The application was so easy. Within 48 hours, I had my strategy call booked. Within 2 weeks, we were live. Within 90 days, we'd doubled revenue. Best decision I ever made."
                 </blockquote>
                 <div className="space-y-1">
-                  <div className="font-apple font-semibold text-[hsl(var(--text-primary))]">— Sarah K.</div>
+                  <div className="font-apple font-semibold text-[hsl(var(--text-primary))]">- Sarah K.</div>
                   <div className="font-apple text-sm text-[hsl(var(--text-secondary))]">Founder, E-Commerce Brand</div>
                   <div className="font-apple text-sm text-[hsl(var(--text-secondary))]">($45K/mo → $185K/mo in 90 days)</div>
                 </div>
@@ -253,7 +253,7 @@ const EnhancedApplication = ({ route, onSubmit, onBack, userAnswers }: EnhancedA
                       required
                     />
                     <p className="text-sm font-apple text-[hsl(var(--text-secondary))] mt-1">
-                      We'll text you updates—way faster than email
+                      We'll text you updates-way faster than email
                     </p>
                   </div>
                   
@@ -388,7 +388,7 @@ const EnhancedApplication = ({ route, onSubmit, onBack, userAnswers }: EnhancedA
                       <SelectItem value="domination">$9,000-$10,000/month (Domination Tier)</SelectItem>
                       <SelectItem value="enterprise">$10,000+/month (Enterprise)</SelectItem>
                       <SelectItem value="scholarship">I'm hoping to qualify for a Founder's Scholarship (50% off first 3 months)</SelectItem>
-                      <SelectItem value="unsure">Not sure yet—tell me more on the strategy call</SelectItem>
+                      <SelectItem value="unsure">Not sure yet-tell me more on the strategy call</SelectItem>
                     </SelectContent>
                   </Select>
                   <p className="text-sm font-apple text-[hsl(var(--text-secondary))] mt-1">

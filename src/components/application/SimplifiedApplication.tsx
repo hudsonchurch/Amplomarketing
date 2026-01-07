@@ -119,7 +119,7 @@ const SimplifiedApplication = ({ route, onSubmit, onBack, userAnswers }: Simplif
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-[hsl(var(--green-success))] mt-0.5 flex-shrink-0" />
-                    <span className="font-apple text-[hsl(var(--text-primary))]">No pitch, no pressure—just real talk</span>
+                    <span className="font-apple text-[hsl(var(--text-primary))]">No pitch, no pressure-just real talk</span>
                   </div>
                 </div>
               </div>
@@ -135,7 +135,7 @@ const SimplifiedApplication = ({ route, onSubmit, onBack, userAnswers }: Simplif
                   "The application was so easy. Within 48 hours, I had my strategy call booked. Within 2 weeks, we were live. Best decision I made for my business."
                 </blockquote>
                 <div className="space-y-1">
-                  <div className="font-apple font-semibold text-[hsl(var(--text-primary))]">— Sarah K.</div>
+                  <div className="font-apple font-semibold text-[hsl(var(--text-primary))]">- Sarah K.</div>
                   <div className="font-apple text-sm text-[hsl(var(--text-secondary))]">E-Commerce Founder</div>
                 </div>
               </div>
@@ -311,7 +311,7 @@ const SimplifiedApplication = ({ route, onSubmit, onBack, userAnswers }: Simplif
                       <SelectItem value="9k-10k">$9,000-$10,000/month</SelectItem>
                       <SelectItem value="10k+">$10,000+/month</SelectItem>
                       <SelectItem value="scholarship">Hoping for Founder's Scholarship</SelectItem>
-                      <SelectItem value="unsure">Not sure—tell me on the call</SelectItem>
+                      <SelectItem value="unsure">Not sure-tell me on the call</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

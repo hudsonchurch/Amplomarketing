@@ -88,7 +88,7 @@ const Step1 = ({ onNext }: Step1Props) => {
           </div>
 
           <p className="text-sm text-black mb-8">
-            Don't worry—there's no "wrong" answer. We work with businesses at different stages.
+            Don't worry-there's no "wrong" answer. We work with businesses at different stages.
           </p>
 
           <p className="text-xs text-gray-500 text-center">

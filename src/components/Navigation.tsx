@@ -38,6 +38,12 @@ const Navigation = () => {
             <button onClick={() => scrollToSection('services')} className="text-navy hover:text-gold transition-colors font-medium">
               Services
             </button>
+            <a href="#/contact" className="text-navy hover:text-gold transition-colors font-medium">
+              Contact
+            </a>
+            <a href="#/apply" className="text-navy hover:text-gold transition-colors font-medium">
+              Apply Now
+            </a>
             
           </div>
 

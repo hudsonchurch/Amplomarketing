@@ -6,8 +6,10 @@ import CountdownTimer from '@/components/CountdownTimer';
 import Testimonial from '@/components/Testimonial';
 import { CheckCircle, X, AlertTriangle, Target, DollarSign, TrendingUp, Users, Star, Play, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 const Index = () => {
   const navigate = useNavigate();
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const goToApplication = () => {
     navigate('/apply');
   };
@@ -54,7 +56,7 @@ const Index = () => {
               </div>
               <div className="flex items-center gap-4">
                 <CheckCircle className="text-[hsl(var(--green-success))] w-6 h-6 flex-shrink-0" />
-                <span className="font-apple font-medium text-[hsl(var(--text-primary))]"><span className="font-semibold text-[hsl(var(--gold-accent))]">You Own Everything</span> (Accounts, Creative, Data—Forever)</span>
+                <span className="font-apple font-medium text-[hsl(var(--text-primary))]"><span className="font-semibold text-[hsl(var(--gold-accent))]">You Own Everything</span> (Accounts, Creative, Data-Forever)</span>
               </div>
               <div className="flex items-center gap-4">
                 <CheckCircle className="text-[hsl(var(--green-success))] w-6 h-6 flex-shrink-0" />
@@ -190,7 +192,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[{
             icon: <DollarSign className="w-8 h-8 text-black" />,
-            title: "Paid $5K/Month for 6 Months—Got Zero ROI",
+            title: "Paid $5K/Month for 6 Months-Got Zero ROI",
             content: "You handed over your hard-earned money. They gave you dashboards that looked impressive. Your revenue? Still flat. You kept asking, 'When do we see results?' They kept saying, 'Give it time.'"
           }, {
             icon: <TrendingUp className="w-8 h-8 text-black" />,
@@ -202,7 +204,7 @@ const Index = () => {
             content: "You knew by Month 2 it wasn't working. But you were stuck. The contract was ironclad. So they kept auto-billing your card while you watched your cash reserves drain."
           }, {
             icon: <X className="w-8 h-8 text-black" />,
-            title: "Zero Transparency—Felt Like I Was Being Scammed",
+            title: "Zero Transparency-Felt Like I Was Being Scammed",
             content: "You'd ask, 'What exactly are you doing this month?' They'd dodge. They'd deflect. Translation: They weren't doing much, and they knew you'd figure it out."
           }, {
             icon: <Users className="w-8 h-8 text-black" />,
@@ -210,7 +212,7 @@ const Index = () => {
             content: "The ads guy blamed the creative. The creative blamed the landing page. The strategist blamed the market. Nobody owned the outcome. You paid for all of them. None delivered."
           }, {
             icon: <Target className="w-8 h-8 text-black" />,
-            title: "Promised 'Results in 90 Days'—Still Waiting After 9 Months",
+            title: "Promised 'Results in 90 Days'-Still Waiting After 9 Months",
             content: "'Just give it a little more time.' 'The funnel needs to warm up.' Meanwhile, you're bleeding cash and patience. And they keep cashing your checks."
           }].map((pain, index) => <Card key={index} className="card-hover border-2 border-navy">
                 <CardContent className="p-6">
@@ -275,7 +277,7 @@ const Index = () => {
               <h3 className="text-2xl font-bold mb-6 text-gold">AMPLO IS DIFFERENT:</h3>
               <div className="space-y-4">
                 <p className="text-lg font-bold text-[rgb(252,224,127)]">
-                  We own the entire journey—from the first click to cash in your bank.
+                  We own the entire journey-from the first click to cash in your bank.
                 </p>
                 <div className="space-y-3">
                   <p className="text-[rgb(252,224,127)]">If the ads work but the landing page doesn't convert? <span className="text-gold font-bold">Our problem.</span></p>
@@ -319,7 +321,7 @@ const Index = () => {
                     <div>
                       <span className="font-bold">Paid Ads Across Every Platform</span>
                       <p className="text-sm text-black">
-                        Meta, Google, TikTok, LinkedIn—wherever your customers are, we dominate.
+                        Meta, Google, TikTok, LinkedIn-wherever your customers are, we dominate.
                       </p>
                     </div>
                   </div>
@@ -360,7 +362,7 @@ const Index = () => {
                 <h3 className="text-2xl font-bold text-black mb-4">We Turn Clicks Into Customers</h3>
                 <p className="text-lg mb-6">
                   Most agencies drive traffic and call it a day. <span className="font-bold">Cool. You got 1,000 clicks. How many bought?</span> 
-                  We own the entire conversion path—from the first click to the "thank you for your purchase" page.
+                  We are accountable for the entire conversion path from the first click to the "thank you for your purchase" page.
                 </p>
                 
                 <div className="space-y-3">
@@ -389,7 +391,7 @@ const Index = () => {
                     <div>
                       <span className="font-bold">Creative That Converts</span>
                       <p className="text-sm text-black">
-                        Ads, videos, graphics—all designed for results, not awards.
+                        Ads, videos, graphics-all designed for results, not awards.
                       </p>
                     </div>
                   </div>
@@ -419,7 +421,7 @@ const Index = () => {
                     <div>
                       <span className="font-bold">AI Automations</span>
                       <p className="text-sm text-black">
-                        Lead qualification bots, CRM integrations—cut manual work by 70%.
+                        Lead qualification bots, CRM integrations-cut manual work by 70%.
                       </p>
                     </div>
                   </div>
@@ -601,7 +603,7 @@ const Index = () => {
                   <div className="bg-light-gray p-6 rounded-lg">
                     <h4 className="font-bold text-lg mb-4">IN MIKE'S WORDS:</h4>
                     <blockquote className="italic text-black mb-6">
-                      "Amplo didn't just get us leads—they gave me my life back. I was drowning in manual sales processes. 
+                      "Amplo didn't just get us leads-they gave me my life back. I was drowning in manual sales processes. 
                       Now we have a system that runs itself. We just closed our Series A because investors finally saw 
                       predictable, scalable growth."
                     </blockquote>
@@ -666,6 +668,230 @@ const Index = () => {
         </div>
       </section>
       
+      {/* FAQ SECTION */}
+      <section id="faq" className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto">
+            {/* FAQ Header */}
+            <div className="text-center mb-16">
+              <h2 className="text-5xl font-apple font-bold text-[hsl(var(--navy-primary))] mb-4">
+                Questions?
+                <br />Here's What Everyone Asks.
+              </h2>
+              <p className="text-xl text-gray-600">
+                No fluff. Just straight answers.
+              </p>
+            </div>
+
+            {/* FAQ Accordion */}
+            <div className="space-y-4 mb-12">
+              {[
+                {
+                  question: "How are you different from every other agency that says they're 'different'?",
+                  answer: `Fair question. Every agency claims they're unique.
+
+Here's how we actually are:
+✅ Month-to-month only (no 6-12 month contracts)
+✅ 30-day out clause (walk if we don't perform)
+✅ You own everything (accounts, creative, data-all yours)
+✅ Full-funnel accountability (we're responsible for the entire journey, not just ads)
+✅ Real-time transparency (live dashboards, weekly calls, direct Slack access)
+
+Most agencies lock you in because they know they're not that good.
+We earn your business every 30 days by actually delivering.`
+                },
+                {
+                  question: "What if this doesn't work for my business?",
+                  answer: `Then you leave.
+
+We have a 30-day out clause. If you're not seeing progress, value, or results-cancel with 30 days' notice. No penalties. No fees.
+
+Why?
+Because we only want to work with businesses we're actually helping.
+
+If we're not delivering, keeping your money would be... well, scammy.
+We're allergic to scam.`
+                },
+                {
+                  question: "I've been burned by 2-3 agencies already. Why should I trust you?",
+                  answer: `You shouldn't. Not yet.
+
+Don't trust our promises. Trust our proof.
+
+Here's what we suggest:
+• Read our case studies (real businesses, real numbers)
+• Watch our video testimonials
+• Schedule a free strategy call (we'll audit your business, no pitch)
+• (Optional) We'll connect you with 2-3 current partners in your industry-ask them anything
+
+Then make a rational decision based on evidence.
+We're not asking for a leap of faith. We're asking you to look at the data.`
+                },
+                {
+                  question: "How fast will I see results?",
+                  answer: `Depends on your starting point.
+
+Typical timeline:
+• Week 1-2: Strategy finalized, campaigns launched
+• Week 3-4: First qualified leads arrive
+• Month 2: Lead flow becomes predictable
+• Month 3: Meaningful revenue lift (most partners see 50-150% growth here)
+• Month 4+: Scale and compound
+
+Real talk:
+We're not selling "10X in 30 days" BS.
+We're building a revenue engine. Engines take time to install and optimize.
+But once it's running? It prints.
+
+Average result: 127% revenue increase in 90 days.`
+                },
+                {
+                  question: "What's the investment? Can I afford this?",
+                  answer: `Our retainers range from $1,000–$10,000/month depending on:
+• Your business size & revenue
+• Scope of services needed
+• Your industry complexity
+• How fast you want to scale
+
+Is it worth it?
+Our average partner sees 127% revenue increase in 90 days.
+
+Even if you're conservative and only see a 50% lift:
+$100K/month → $150K/month
+That's $50K in new monthly revenue
+Your investment: ~$15K over 3 months
+ROI: 3.3x
+
+Not the cheapest. But the best ROI.
+
+Strategy calls are free. We'll give you exact pricing based on your needs-zero pressure.
+
+Can't afford full investment yet?
+Apply for a Founder's Scholarship (50% off first 3 months). Only 2 per quarter.`
+                },
+                {
+                  question: "Do I get locked into a long contract?",
+                  answer: `Never.
+
+Month-to-month only. Cancel with 30 days' notice. No penalties. No fees.
+
+If you cancel:
+• You keep all accounts, creative, data, systems
+• We'll do a handoff call to ensure smooth transition
+• No hard feelings
+
+Why no contracts?
+Because long contracts are what agencies use when they know they're not that good.
+
+We're confident. If we're delivering, you'll stay. If we're not, you shouldn't have to.`
+                },
+                {
+                  question: "Will I actually know what you're doing? Or is it a black box?",
+                  answer: `You'll know obsessively.
+
+✅ Live dashboard access (see performance 24/7)
+✅ Weekly strategy calls (30-60 min deep-dives)
+✅ Direct Slack access (questions answered in hours, not days)
+✅ Monthly performance reviews (comprehensive breakdowns)
+✅ Full account access (you have admin to everything)
+
+Most agencies keep you in the dark because they don't want you to see how little they're doing.
+We want you under the hood.
+
+If we're not comfortable showing you what we're doing, we shouldn't be doing it.`
+                },
+                {
+                  question: "What if I'm in a 'weird' or 'difficult' niche?",
+                  answer: `We love weird.
+
+Niche businesses often have the best ROI because:
+• Competitors use generic strategies
+• Customer intent is crystal clear
+• Less noise to break through
+
+We've worked with:
+• Industrial B2B (laser cutting services)
+• Luxury pet accessories ($400 dog beds)
+• B2B SaaS for dental practices
+• Local HVAC ("everyone says it's too competitive")
+• E-commerce selling... let's just say "adult wellness products"
+
+Our process:
+• Week 1: Deep market research (your customers, competitors, forums)
+• Week 2: Craft positioning using their language
+• Week 3: Test messaging until we find winners
+
+If you have customers, we can reach them.`
+                },
+                {
+                  question: "Do you work with businesses outside the U.S.?",
+                  answer: `Yes-if you're selling to English-speaking markets (U.S., Canada, UK, Australia, New Zealand).
+
+Why English-speaking?
+Because copy is 60% of conversion.
+
+We write killer direct-response copy (belief-shifting, objection-handling, psychology-driven). That requires native-level language understanding.
+
+If you're selling in non-English markets, we're probably not the best fit.`
+                },
+                {
+                  question: "What if I just need ONE service (like just ads)?",
+                  answer: `Then we're not a fit.
+
+We don't do à la carte.
+
+Why?
+We've seen too many businesses waste money on "just ads" when the real problem was:
+• Landing page (conversion issue)
+• Offer (positioning issue)
+• Follow-up (nurture issue)
+
+Example:
+Client wanted "just Meta ads." We ran them. Got traffic. Zero conversions.
+Why? Landing page was broken.
+
+If we'd been "just the ads guy," we'd have shrugged.
+Instead, we rebuilt the page, fixed the offer, implemented email follow-up-and tripled ROAS.
+
+Full-funnel accountability = no finger-pointing.
+
+If you want someone to "run ads and send reports," hire a freelancer. Save money.
+But if you want someone to own your growth? We're your people.`
+                }
+              ].map((faq, index) => (
+                <div key={index} className="border border-gray-200 rounded-lg">
+                  <button
+                    className="w-full text-left p-6 hover:bg-gray-50 transition-colors"
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  >
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-lg font-bold text-black pr-4">{faq.question}</h3>
+                      <span className="text-2xl text-gray-400">{openFaq === index ? '-' : '+'}</span>
+                    </div>
+                  </button>
+                  {openFaq === index && (
+                    <div className="px-6 pb-6">
+                      <div className="text-gray-700 whitespace-pre-line">{faq.answer}</div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Final Statement */}
+            <div className="text-center mb-8">
+              <p className="text-xl font-bold text-black mb-6">
+                "Still skeptical? Good. You should be.
+                <br />That's exactly why we built Amplo differently."
+              </p>
+              <Button onClick={goToApplication} className="btn-primary px-12 py-4 text-lg">
+                Apply Now - See If You Qualify →
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* FINAL CTA SECTION */}
       <section className="section-padding bg-navy text-white">
         <div className="container-custom text-center">
@@ -684,7 +910,7 @@ const Index = () => {
           <div className="max-w-3xl mx-auto mb-12">
             <h3 className="text-2xl font-bold mb-8">When You Partner With <span className="text-[hsl(var(--gold-accent))]">Amplo</span>, You Get:</h3>
             <div className="grid md:grid-cols-2 gap-4 text-left">
-              {["Full-Funnel Ownership (traffic → leads → sales → revenue)", "30M+ Views Worth of Expertise (organic + paid mastery)", "Month-to-Month Terms (no 12-month prison sentences)", "Real-Time Transparency (live dashboards, weekly calls)", "Senior Team (not 23-year-old account managers)", "87% Success Rate (vs. 20-30% industry average)", "30-Day Out Clause (walk if we don't perform—zero risk)", "You Own Everything (accounts, creative, data—forever)"].map((benefit, index) => <div key={index} className="flex items-start gap-3">
+              {["Full-Funnel Ownership (traffic → leads → sales → revenue)", "30M+ Views Worth of Expertise (organic + paid mastery)", "Month-to-Month Terms (no 12-month prison sentences)", "Real-Time Transparency (live dashboards, weekly calls)", "Senior Team (not 23-year-old account managers)", "87% Success Rate (vs. 20-30% industry average)", "30-Day Out Clause (walk if we don't perform-zero risk)", "You Own Everything (accounts, creative, data-forever)"].map((benefit, index) => <div key={index} className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
                   <span>{benefit}</span>
                 </div>)}
