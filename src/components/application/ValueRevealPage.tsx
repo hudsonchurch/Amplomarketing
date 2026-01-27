@@ -180,9 +180,10 @@ const ValueRevealPage = ({ onContinue, onGetResources, route }: ValueRevealPageP
           <div className="text-center">
             <Button 
               onClick={onContinue}
-              className="bg-[hsl(var(--gold-accent))] hover:bg-[hsl(var(--gold-accent))]/90 text-[hsl(var(--navy-primary))] font-apple font-bold text-xl px-12 py-6 rounded-full"
+              className="bg-[hsl(var(--gold-accent))] hover:bg-[hsl(var(--gold-accent))]/90 text-[hsl(var(--navy-primary))] font-apple font-bold text-lg md:text-xl px-6 md:px-12 py-4 md:py-6 rounded-full"
             >
-              Ready to Grow? Continue Application →
+              <span className="hidden sm:inline">Ready to Grow? Continue Application →</span>
+              <span className="sm:hidden">Continue Application →</span>
             </Button>
             <p className="font-apple text-white/80 mt-3">
               Takes 2 minutes. See if you qualify.
@@ -335,9 +336,10 @@ const ValueRevealPage = ({ onContinue, onGetResources, route }: ValueRevealPageP
             
             <Button 
               onClick={onContinue}
-              className="bg-[hsl(var(--gold-accent))] hover:bg-[hsl(var(--gold-accent))]/90 text-[hsl(var(--navy-primary))] font-apple font-bold text-xl px-12 py-6 rounded-full text-lg"
+              className="bg-[hsl(var(--gold-accent))] hover:bg-[hsl(var(--gold-accent))]/90 text-[hsl(var(--navy-primary))] font-apple font-bold text-lg md:text-xl px-6 md:px-12 py-4 md:py-6 rounded-full"
             >
-              Continue Application →
+              <span className="hidden sm:inline">Continue Application →</span>
+              <span className="sm:hidden">Continue →</span>
             </Button>
             
             <p className="font-apple text-white/80">

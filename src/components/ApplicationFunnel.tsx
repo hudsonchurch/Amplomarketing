@@ -1,4 +1,13 @@
 import { useState, useEffect } from 'react';
+import { 
+  trackQuizStarted, 
+  trackQuizQuestionAnswered, 
+  trackQuizCompleted, 
+  trackQuizResultViewed,
+  trackLead,
+  newEventId,
+  getStoredTrackingData
+} from '@/lib/metaPixel';
 import Step1 from '@/components/application/Step1';
 import Step2 from '@/components/application/Step2';
 import Step3 from '@/components/application/Step3';
@@ -28,18 +37,48 @@ const ApplicationFunnel = () => {
   });
   const [route, setRoute] = useState<'qualified' | 'scholarship' | 'alternative' | null>(null);
   const [pendingSeriousness, setPendingSeriousness] = useState<string>('');
+  const [quizStartTime, setQuizStartTime] = useState<number>(Date.now());
+  const [quizEventId, setQuizEventId] = useState<string>(newEventId());
 
   // Auto-scroll to top when step changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Track quiz start with comprehensive data
+    if (currentStep === 1) {
+      setQuizStartTime(Date.now());
+      const trackingData = getStoredTrackingData();
+      trackQuizStarted({
+        quiz_name: 'Amplo Growth Audit Quiz',
+        quiz_version: 'v1',
+        traffic_source: trackingData.utm_source || 'direct',
+        page_url: window.location.href
+      }, quizEventId);
+    }
   }, [currentStep]);
 
   const handleStep1Next = (revenue: string) => {
+    trackQuizQuestionAnswered({
+      quiz_name: 'Amplo Growth Audit Quiz',
+      question_number: 1,
+      question_id: 'revenue',
+      answer_id: revenue,
+      total_questions: 3
+    }, `${quizEventId}-q1`);
+    
     setApplicationData(prev => ({ ...prev, revenue }));
     setCurrentStep(2);
   };
 
   const handleStep2Next = (businessModel: string, customModel?: string) => {
+    trackQuizQuestionAnswered({
+      quiz_name: 'Amplo Growth Audit Quiz',
+      question_number: 2,
+      question_id: 'business_model',
+      answer_id: customModel || businessModel,
+      total_questions: 3
+    }, `${quizEventId}-q2`);
+    
     setApplicationData(prev => ({ 
       ...prev, 
       businessModel,
@@ -49,6 +88,14 @@ const ApplicationFunnel = () => {
   };
 
   const handleStep3Next = (seriousness: string) => {
+    trackQuizQuestionAnswered({
+      quiz_name: 'Amplo Growth Audit Quiz',
+      question_number: 3,
+      question_id: 'seriousness',
+      answer_id: seriousness,
+      total_questions: 3
+    }, `${quizEventId}-q3`);
+    
     setApplicationData(prev => ({ ...prev, seriousness }));
     setPendingSeriousness(seriousness);
     
@@ -71,6 +118,21 @@ const ApplicationFunnel = () => {
     // Route C: Too early (very low revenue)
     if (revenueLevel === 'early-stage' && (seriousnessLevel === 'exploring' || seriousnessLevel === 'curious')) {
       setRoute('alternative');
+      
+      // Track quiz completion for alternative route
+      const completionTime = Math.round((Date.now() - quizStartTime) / 1000);
+      const trackingData = getStoredTrackingData();
+      
+      trackQuizCompleted({
+        quiz_name: 'Amplo Growth Audit Quiz',
+        quiz_version: 'v1',
+        total_questions: 3,
+        completion_time_sec: completionTime,
+        result_type: 'Alternative',
+        traffic_source: trackingData.utm_source || 'direct',
+        page_url: window.location.href
+      }, `${quizEventId}-complete`);
+      
       setCurrentStep(9); // Alternative Offer
       return;
     }
@@ -79,6 +141,21 @@ const ApplicationFunnel = () => {
     if ((revenueLevel === 'early-stage' || revenueLevel === 'early-growth') && 
         (seriousnessLevel === 'extremely-serious' || seriousnessLevel === 'serious')) {
       setRoute('scholarship');
+      
+      // Track quiz completion for scholarship route
+      const completionTime = Math.round((Date.now() - quizStartTime) / 1000);
+      const trackingData = getStoredTrackingData();
+      
+      trackQuizCompleted({
+        quiz_name: 'Amplo Growth Audit Quiz',
+        quiz_version: 'v1',
+        total_questions: 3,
+        completion_time_sec: completionTime,
+        result_type: 'Scholarship',
+        traffic_source: trackingData.utm_source || 'direct',
+        page_url: window.location.href
+      }, `${quizEventId}-complete`);
+      
       setCurrentStep(10); // Scholarship Calendly Page
       return;
     }
@@ -89,6 +166,30 @@ const ApplicationFunnel = () => {
          revenueLevel === 'enterprise-plus') && 
         (seriousnessLevel === 'extremely-serious' || seriousnessLevel === 'serious')) {
       setRoute('qualified');
+      
+      // Track qualified user - this is our highest value conversion
+      const completionTime = Math.round((Date.now() - quizStartTime) / 1000);
+      const trackingData = getStoredTrackingData();
+      
+      // Track quiz completion
+      trackQuizCompleted({
+        quiz_name: 'Amplo Growth Audit Quiz',
+        quiz_version: 'v1',
+        total_questions: 3,
+        completion_time_sec: completionTime,
+        result_type: 'Qualified',
+        traffic_source: trackingData.utm_source || 'direct',
+        page_url: window.location.href
+      }, `${quizEventId}-complete`);
+      
+      // Track as high-value lead
+      trackLead({
+        content_name: 'Amplo Growth Audit Quiz',
+        lead_type: 'quiz_result',
+        value: 5000, // Assign value to qualified leads
+        currency: 'USD'
+      }, `${quizEventId}-lead`);
+      
       setCurrentStep(5); // Value Reveal Page
       return;
     }
@@ -99,6 +200,13 @@ const ApplicationFunnel = () => {
   };
 
   const handleValueRevealContinue = () => {
+    // Track result viewing
+    trackQuizResultViewed({
+      quiz_name: 'Amplo Growth Audit Quiz',
+      result_type: route || 'unknown',
+      recommendations_shown: route === 'qualified' ? 5 : 3
+    }, `${quizEventId}-result`);
+    
     if (route === 'qualified') {
       setCurrentStep(11); // Qualified Calendly Page with FAQ
     } else {

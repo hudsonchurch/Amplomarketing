@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { metaTrackCustom, newEventId } from '@/lib/metaPixel';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 
 const FAQ = () => {
   const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  
+  useEffect(() => {
+    // Page view is handled by MetaPageViewTracker
+  }, []);
 
   const faqs = [
     {
@@ -271,7 +276,13 @@ We only want partners who are excited to work with us not people we closed.`
               <div key={index} className="border border-gray-200 rounded-lg">
                 <button
                   className="w-full text-left p-6 hover:bg-gray-50 transition-colors"
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  onClick={() => {
+                    metaTrackCustom('FAQInteraction', {
+                      question: faq.question,
+                      source: 'FAQPage'
+                    }, newEventId());
+                    setOpenFaq(openFaq === index ? null : index);
+                  }}
                 >
                   <div className="flex justify-between items-center">
                     <h3 className="text-lg font-bold text-black pr-4">{faq.question}</h3>

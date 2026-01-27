@@ -1,9 +1,35 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useEffect } from 'react';
+import { trackSchedule, trackContact, newEventId, metaTrackCustom } from '@/lib/metaPixel';
 
 const Contact = () => {
+  useEffect(() => {
+    // Page view is handled by MetaPageViewTracker
+  }, []);
+  
   const handleScheduleCall = () => {
+    trackSchedule({
+      schedule_stage: 'click',
+      content_name: 'Schedule Free Call - Contact Page',
+      method: 'calendly'
+    }, newEventId());
+    
     window.open('https://calendly.com/brody-amplomarketing/30min?month=2026-01', 'calendly', 'width=800,height=700,scrollbars=yes,resizable=yes');
+  };
+  
+  const handleEmailClick = () => {
+    trackContact({
+      method: 'email',
+      content_name: 'Contact Email Click'
+    }, newEventId());
+  };
+  
+  const handlePhoneClick = () => {
+    trackContact({
+      method: 'phone',
+      content_name: 'Contact Phone Click'
+    }, newEventId());
   };
 
   return (
@@ -54,6 +80,7 @@ const Contact = () => {
               </p>
               <a 
                 href="mailto:hello@amplomarketing.com"
+                onClick={handleEmailClick}
                 className="inline-block bg-navy hover:bg-navy/90 text-white font-bold px-8 py-4 rounded-full text-lg transition-colors"
               >
                 hello@amplomarketing.com
@@ -71,6 +98,11 @@ const Contact = () => {
             </p>
             <a 
               href="#/faq"
+              onClick={() => metaTrackCustom('ButtonClick', {
+                button_name: 'View FAQ',
+                location: 'ContactPage',
+                destination: '/faq'
+              }, newEventId())}
               className="inline-block bg-gold hover:bg-gold/90 text-white font-bold px-8 py-4 rounded-full text-lg transition-colors"
             >
               View FAQ

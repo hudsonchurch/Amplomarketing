@@ -6,11 +6,24 @@ import CountdownTimer from '@/components/CountdownTimer';
 import Testimonial from '@/components/Testimonial';
 import { CheckCircle, X, AlertTriangle, Target, DollarSign, TrendingUp, Users, Star, Play, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { metaTrackCustom, newEventId } from '@/lib/metaPixel';
 const Index = () => {
   const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  
+  useEffect(() => {
+    // Page view is handled by MetaPageViewTracker
+  }, []);
+  
   const goToApplication = () => {
+    metaTrackCustom('ButtonClick', {
+      button_name: 'Apply Now',
+      location: 'Homepage',
+      destination: '/apply',
+      action: 'start_application'
+    }, newEventId());
+    
     navigate('/apply');
   };
   const scrollToProof = () => {
@@ -685,10 +698,9 @@ const Index = () => {
 
             {/* FAQ Accordion */}
             <div className="space-y-4 mb-12">
-              {[
-                {
-                  question: "How are you different from every other agency that says they're 'different'?",
-                  answer: `Fair question. Every agency claims they're unique.
+              {[{
+              question: "How are you different from every other agency that says they're 'different'?",
+              answer: `Fair question. Every agency claims they're unique.
 
 Here's how we actually are:
 ✅ Month-to-month only (no 6-12 month contracts)
@@ -699,10 +711,9 @@ Here's how we actually are:
 
 Most agencies lock you in because they know they're not that good.
 We earn your business every 30 days by actually delivering.`
-                },
-                {
-                  question: "What if this doesn't work for my business?",
-                  answer: `Then you leave.
+            }, {
+              question: "What if this doesn't work for my business?",
+              answer: `Then you leave.
 
 We have a 30-day out clause. If you're not seeing progress, value, or results-cancel with 30 days' notice. No penalties. No fees.
 
@@ -711,10 +722,9 @@ Because we only want to work with businesses we're actually helping.
 
 If we're not delivering, keeping your money would be... well, scammy.
 We're allergic to scam.`
-                },
-                {
-                  question: "I've been burned by 2-3 agencies already. Why should I trust you?",
-                  answer: `You shouldn't. Not yet.
+            }, {
+              question: "I've been burned by 2-3 agencies already. Why should I trust you?",
+              answer: `You shouldn't. Not yet.
 
 Don't trust our promises. Trust our proof.
 
@@ -726,10 +736,9 @@ Here's what we suggest:
 
 Then make a rational decision based on evidence.
 We're not asking for a leap of faith. We're asking you to look at the data.`
-                },
-                {
-                  question: "How fast will I see results?",
-                  answer: `Depends on your starting point.
+            }, {
+              question: "How fast will I see results?",
+              answer: `Depends on your starting point.
 
 Typical timeline:
 • Week 1-2: Strategy finalized, campaigns launched
@@ -744,10 +753,9 @@ We're building a revenue engine. Engines take time to install and optimize.
 But once it's running? It prints.
 
 Average result: 127% revenue increase in 90 days.`
-                },
-                {
-                  question: "What's the investment? Can I afford this?",
-                  answer: `Our retainers range from $1,000–$10,000/month depending on:
+            }, {
+              question: "What's the investment? Can I afford this?",
+              answer: `Our retainers range from $1,000–$10,000/month depending on:
 • Your business size & revenue
 • Scope of services needed
 • Your industry complexity
@@ -768,10 +776,9 @@ Strategy calls are free. We'll give you exact pricing based on your needs-zero p
 
 Can't afford full investment yet?
 Apply for a Founder's Scholarship (50% off first 3 months). Only 2 per quarter.`
-                },
-                {
-                  question: "Do I get locked into a long contract?",
-                  answer: `Never.
+            }, {
+              question: "Do I get locked into a long contract?",
+              answer: `Never.
 
 Month-to-month only. Cancel with 30 days' notice. No penalties. No fees.
 
@@ -784,10 +791,9 @@ Why no contracts?
 Because long contracts are what agencies use when they know they're not that good.
 
 We're confident. If we're delivering, you'll stay. If we're not, you shouldn't have to.`
-                },
-                {
-                  question: "Will I actually know what you're doing? Or is it a black box?",
-                  answer: `You'll know obsessively.
+            }, {
+              question: "Will I actually know what you're doing? Or is it a black box?",
+              answer: `You'll know obsessively.
 
 ✅ Live dashboard access (see performance 24/7)
 ✅ Weekly strategy calls (30-60 min deep-dives)
@@ -799,10 +805,9 @@ Most agencies keep you in the dark because they don't want you to see how little
 We want you under the hood.
 
 If we're not comfortable showing you what we're doing, we shouldn't be doing it.`
-                },
-                {
-                  question: "What if I'm in a 'weird' or 'difficult' niche?",
-                  answer: `We love weird.
+            }, {
+              question: "What if I'm in a 'weird' or 'difficult' niche?",
+              answer: `We love weird.
 
 Niche businesses often have the best ROI because:
 • Competitors use generic strategies
@@ -822,10 +827,9 @@ Our process:
 • Week 3: Test messaging until we find winners
 
 If you have customers, we can reach them.`
-                },
-                {
-                  question: "Do you work with businesses outside the U.S.?",
-                  answer: `Yes-if you're selling to English-speaking markets (U.S., Canada, UK, Australia, New Zealand).
+            }, {
+              question: "Do you work with businesses outside the U.S.?",
+              answer: `Yes-if you're selling to English-speaking markets (U.S., Canada, UK, Australia, New Zealand).
 
 Why English-speaking?
 Because copy is 60% of conversion.
@@ -833,10 +837,9 @@ Because copy is 60% of conversion.
 We write killer direct-response copy (belief-shifting, objection-handling, psychology-driven). That requires native-level language understanding.
 
 If you're selling in non-English markets, we're probably not the best fit.`
-                },
-                {
-                  question: "What if I just need ONE service (like just ads)?",
-                  answer: `Then we're not a fit.
+            }, {
+              question: "What if I just need ONE service (like just ads)?",
+              answer: `Then we're not a fit.
 
 We don't do à la carte.
 
@@ -857,25 +860,23 @@ Full-funnel accountability = no finger-pointing.
 
 If you want someone to "run ads and send reports," hire a freelancer. Save money.
 But if you want someone to own your growth? We're your people.`
-                }
-              ].map((faq, index) => (
-                <div key={index} className="border border-gray-200 rounded-lg">
-                  <button
-                    className="w-full text-left p-6 hover:bg-gray-50 transition-colors"
-                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  >
+            }].map((faq, index) => <div key={index} className="border border-gray-200 rounded-lg">
+                  <button className="w-full text-left p-6 hover:bg-gray-50 transition-colors" onClick={() => {
+                    metaTrackCustom('FAQInteraction', {
+                      question: faq.question,
+                      source: 'Homepage'
+                    }, newEventId());
+                    setOpenFaq(openFaq === index ? null : index);
+                  }}>
                     <div className="flex justify-between items-center">
                       <h3 className="text-lg font-bold text-black pr-4">{faq.question}</h3>
                       <span className="text-2xl text-gray-400">{openFaq === index ? '-' : '+'}</span>
                     </div>
                   </button>
-                  {openFaq === index && (
-                    <div className="px-6 pb-6">
+                  {openFaq === index && <div className="px-6 pb-6">
                       <div className="text-gray-700 whitespace-pre-line">{faq.answer}</div>
-                    </div>
-                  )}
-                </div>
-              ))}
+                    </div>}
+                </div>)}
             </div>
 
             {/* Final Statement */}
@@ -895,7 +896,7 @@ But if you want someone to own your growth? We're your people.`
       {/* FINAL CTA SECTION */}
       <section className="section-padding bg-navy text-white">
         <div className="container-custom text-center">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-montserrat font-bold mb-8">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-montserrat font-bold mb-8 text-[rgb(255,255,255)]">
             Partnership Deadline: Only 5 Spots Left for Q1 2026
           </h2>
           

@@ -2,11 +2,18 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Star, Clock, Lock } from 'lucide-react';
 import Testimonial from '@/components/Testimonial';
+import { trackSchedule, metaTrackCustom, newEventId } from '@/lib/metaPixel';
 
 const QualifiedCalendly = () => {
   const [openStrategyFaq, setOpenStrategyFaq] = useState<number | null>(null);
   
   const handleScheduleCall = () => {
+    trackSchedule({
+      schedule_stage: 'click',
+      content_name: 'Schedule Free Call - Qualified Page',
+      method: 'calendly'
+    }, newEventId());
+    
     // Open Calendly in a popup for better UX
     window.open('https://calendly.com/brody-amplomarketing/30min?month=2026-01', 'calendly', 'width=800,height=700,scrollbars=yes,resizable=yes');
   };
@@ -164,7 +171,13 @@ const QualifiedCalendly = () => {
                 <div key={index} className="border border-gray-200 rounded-lg">
                   <button
                     className="w-full text-left p-4 hover:bg-gray-100 transition-colors"
-                    onClick={() => setOpenStrategyFaq(openStrategyFaq === index ? null : index)}
+                    onClick={() => {
+                      metaTrackCustom('FAQInteraction', {
+                        question: faq.question,
+                        source: 'QualifiedPage'
+                      }, newEventId());
+                      setOpenStrategyFaq(openStrategyFaq === index ? null : index);
+                    }}
                   >
                     <div className="flex justify-between items-center">
                       <h4 className="font-bold text-black pr-4">{faq.question}</h4>

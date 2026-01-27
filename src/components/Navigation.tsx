@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { metaTrackCustom, newEventId } from '@/lib/metaPixel';
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
@@ -29,19 +30,48 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <button onClick={() => scrollToSection('how-it-works')} className="text-navy hover:text-gold transition-colors font-medium">
+            <button onClick={() => {
+              metaTrackCustom('ButtonClick', {
+                button_name: 'How It Works',
+                location: 'Navigation',
+                action: 'scroll_to_section'
+              }, newEventId());
+              scrollToSection('how-it-works');
+            }} className="text-navy hover:text-gold transition-colors font-medium">
               How It Works
             </button>
-            <button onClick={() => scrollToSection('proof')} className="text-navy hover:text-gold transition-colors font-medium">
+            <button onClick={() => {
+              metaTrackCustom('ButtonClick', {
+                button_name: 'Proof',
+                location: 'Navigation',
+                action: 'scroll_to_section'
+              }, newEventId());
+              scrollToSection('proof');
+            }} className="text-navy hover:text-gold transition-colors font-medium">
               Proof
             </button>
-            <button onClick={() => scrollToSection('services')} className="text-navy hover:text-gold transition-colors font-medium">
+            <button onClick={() => {
+              metaTrackCustom('ButtonClick', {
+                button_name: 'Services',
+                location: 'Navigation',
+                action: 'scroll_to_section'
+              }, newEventId());
+              scrollToSection('services');
+            }} className="text-navy hover:text-gold transition-colors font-medium">
               Services
             </button>
-            <a href="#/contact" className="text-navy hover:text-gold transition-colors font-medium">
+            <a href="#/contact" onClick={() => metaTrackCustom('ButtonClick', {
+              button_name: 'Contact',
+              location: 'Navigation',
+              destination: '/contact'
+            }, newEventId())} className="text-navy hover:text-gold transition-colors font-medium">
               Contact
             </a>
-            <a href="#/apply" className="text-navy hover:text-gold transition-colors font-medium">
+            <a href="#/apply" onClick={() => metaTrackCustom('ButtonClick', {
+              button_name: 'Apply Now',
+              location: 'Navigation',
+              destination: '/apply'
+            }, newEventId())} className="text-navy hover:text-gold transition-colors font-medium">
               Apply Now
             </a>
             

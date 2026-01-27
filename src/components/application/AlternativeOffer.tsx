@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { supabase } from '@/integrations/supabase/client';
+import { trackLead, trackCompleteRegistration, newEventId } from '@/lib/metaPixel';
 
 const AlternativeOffer = () => {
   const [caseStudyForm, setCaseStudyForm] = useState({ email: '', name: '' });
@@ -19,6 +20,19 @@ const AlternativeOffer = () => {
       alert('Please enter your email address.');
       return;
     }
+    
+    const eventId = newEventId();
+    
+    // Track email capture as lead
+    trackLead({
+      content_name: 'Case Study Download',
+      lead_type: 'newsletter'
+    }, eventId);
+    
+    trackCompleteRegistration({
+      content_name: 'Case Study Download',
+      registration_method: 'email_form'
+    }, `${eventId}-reg`);
     
     if (!caseStudyForm.email.includes('@')) {
       alert('Please enter a valid email address.');
@@ -63,6 +77,19 @@ const AlternativeOffer = () => {
       alert('Please enter your email address.');
       return;
     }
+    
+    const eventId = newEventId();
+    
+    // Track email capture as lead
+    trackLead({
+      content_name: 'Free Course Access',
+      lead_type: 'newsletter'
+    }, eventId);
+    
+    trackCompleteRegistration({
+      content_name: 'Free Course Access',
+      registration_method: 'email_form'
+    }, `${eventId}-reg`);
     
     if (!courseForm.email.includes('@')) {
       alert('Please enter a valid email address.');
