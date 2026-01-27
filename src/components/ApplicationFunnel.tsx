@@ -182,12 +182,10 @@ const ApplicationFunnel = () => {
         page_url: window.location.href
       }, `${quizEventId}-complete`);
       
-      // Track as high-value lead
+      // Track as qualified lead (no value to avoid Purchase events)
       trackLead({
         content_name: 'Amplo Growth Audit Quiz',
-        lead_type: 'quiz_result',
-        value: 5000, // Assign value to qualified leads
-        currency: 'USD'
+        lead_type: 'quiz_result'
       }, `${quizEventId}-lead`);
       
       setCurrentStep(5); // Value Reveal Page

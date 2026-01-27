@@ -2,16 +2,14 @@ import { Button } from '@/components/ui/button';
 import { Phone } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { trackSchedule, newEventId, metaTrackCustom } from '@/lib/metaPixel';
+import { trackCalendlyClick, newEventId, metaTrackCustom } from '@/lib/metaPixel';
 const StickyCallButton = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const handleScheduleCall = () => {
-    // Track scheduling intent
-    trackSchedule({
-      schedule_stage: 'click',
-      content_name: 'Schedule Free Call - Sticky Bar',
-      method: 'calendly'
+    trackCalendlyClick({
+      content_name: 'Sticky Bar CTA',
+      location: 'StickyCallButton'
     }, newEventId());
     
     // Open Calendly in a popup window for better UX
@@ -90,11 +88,7 @@ const StickyCallButton = () => {
 
           {/* Right side - Contact + Schedule Button */}
           <div className="flex items-center gap-3">
-            <a href="#/contact" onClick={() => metaTrackCustom('ButtonClick', {
-              button_name: 'Contact',
-              location: 'StickyBar',
-              destination: '/contact'
-            }, newEventId())} className="text-white hover:text-[hsl(var(--gold-accent))] font-apple font-medium text-sm transition-colors">
+            <a href="#/contact" className="text-white hover:text-[hsl(var(--gold-accent))] font-apple font-medium text-sm transition-colors">
               Contact
             </a>
             <Button onClick={handleScheduleCall} className="bg-transparent border-2 border-[hsl(var(--gold-accent))] text-[hsl(var(--gold-accent))] hover:bg-[hsl(var(--gold-accent))] hover:text-[hsl(var(--navy-primary))] font-apple font-semibold px-6 py-2 rounded-full flex items-center gap-2 text-sm">

@@ -118,15 +118,15 @@ export function trackLead(params: {
 }
 
 /**
- * Track scheduling intent or confirmation
+ * Track Calendly CTA clicks - ONLY Schedule event
  */
-export function trackSchedule(params: {
-  schedule_stage: 'click' | 'confirmed';
-  content_name?: string;
-  method?: 'calendly' | 'phone' | 'email';
+export function trackCalendlyClick(params: {
+  content_name: string;
+  location: string;
 }, eventID?: string): void {
   metaTrack('Schedule', {
-    content_name: 'Book a Call CTA',
+    method: 'calendly',
+    schedule_stage: 'click',
     ...params
   }, eventID);
 }

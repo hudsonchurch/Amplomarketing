@@ -1,7 +1,7 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect } from 'react';
-import { trackSchedule, trackContact, newEventId, metaTrackCustom } from '@/lib/metaPixel';
+import { trackCalendlyClick, trackContact, newEventId } from '@/lib/metaPixel';
 
 const Contact = () => {
   useEffect(() => {
@@ -9,10 +9,9 @@ const Contact = () => {
   }, []);
   
   const handleScheduleCall = () => {
-    trackSchedule({
-      schedule_stage: 'click',
-      content_name: 'Schedule Free Call - Contact Page',
-      method: 'calendly'
+    trackCalendlyClick({
+      content_name: 'Contact Page CTA',
+      location: 'Contact'
     }, newEventId());
     
     window.open('https://calendly.com/brody-amplomarketing/30min?month=2026-01', 'calendly', 'width=800,height=700,scrollbars=yes,resizable=yes');
@@ -98,11 +97,6 @@ const Contact = () => {
             </p>
             <a 
               href="#/faq"
-              onClick={() => metaTrackCustom('ButtonClick', {
-                button_name: 'View FAQ',
-                location: 'ContactPage',
-                destination: '/faq'
-              }, newEventId())}
               className="inline-block bg-gold hover:bg-gold/90 text-white font-bold px-8 py-4 rounded-full text-lg transition-colors"
             >
               View FAQ

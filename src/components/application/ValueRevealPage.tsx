@@ -14,6 +14,7 @@ import {
   Clock
 } from 'lucide-react';
 import { useState } from 'react';
+import { trackCalendlyClick, newEventId } from '@/lib/metaPixel';
 
 interface ValueRevealPageProps {
   onContinue: () => void;
@@ -23,6 +24,11 @@ interface ValueRevealPageProps {
 
 const ValueRevealPage = ({ onContinue, onGetResources, route }: ValueRevealPageProps) => {
   const handleScheduleCall = () => {
+    trackCalendlyClick({
+      content_name: 'Value Reveal CTA',
+      location: 'ValueRevealPage'
+    }, newEventId());
+    
     // Open Calendly in a popup for better UX
     window.open('https://calendly.com/brody-amplomarketing/30min?month=2026-01', 'calendly', 'width=800,height=700,scrollbars=yes,resizable=yes');
   };

@@ -2,16 +2,15 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Star, Clock, Lock } from 'lucide-react';
 import Testimonial from '@/components/Testimonial';
-import { trackSchedule, metaTrackCustom, newEventId } from '@/lib/metaPixel';
+import { trackCalendlyClick, metaTrackCustom, newEventId } from '@/lib/metaPixel';
 
 const QualifiedCalendly = () => {
   const [openStrategyFaq, setOpenStrategyFaq] = useState<number | null>(null);
   
   const handleScheduleCall = () => {
-    trackSchedule({
-      schedule_stage: 'click',
-      content_name: 'Schedule Free Call - Qualified Page',
-      method: 'calendly'
+    trackCalendlyClick({
+      content_name: 'Qualified CTA',
+      location: 'QualifiedCalendly'
     }, newEventId());
     
     // Open Calendly in a popup for better UX

@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Star, Clock, Mail, Phone } from 'lucide-react';
 import Testimonial from '@/components/Testimonial';
+import { trackCalendlyClick, newEventId } from '@/lib/metaPixel';
 
 interface ThankYouApprovedProps {
   businessModel: string;
@@ -8,6 +9,11 @@ interface ThankYouApprovedProps {
 
 const ThankYouApproved = ({ businessModel }: ThankYouApprovedProps) => {
   const handleScheduleCall = () => {
+    trackCalendlyClick({
+      content_name: 'Thank You Approved CTA',
+      location: 'ThankYouApproved'
+    }, newEventId());
+    
     // Open Calendly in a popup for better UX
     window.open('https://calendly.com/brody-amplomarketing/30min?month=2026-01', 'calendly', 'width=800,height=700,scrollbars=yes,resizable=yes');
   };
