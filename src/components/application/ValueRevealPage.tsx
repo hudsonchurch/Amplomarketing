@@ -372,7 +372,7 @@ const ValueRevealPage = ({ onContinue, onGetResources, route }: ValueRevealPageP
                   <div className="mb-16">
                     <Button
                       onClick={handleScheduleCall}
-                      className="btn-primary text-2xl px-16 py-6 mb-6"
+                      className="btn-primary text-xl md:text-2xl px-6 md:px-16 py-6 mb-6"
                     >
                       Schedule Your Free Strategy Call
                     </Button>
@@ -511,7 +511,7 @@ const ValueRevealPage = ({ onContinue, onGetResources, route }: ValueRevealPageP
                   <div className="text-center">
                     <Button
                       onClick={handleScheduleCall}
-                      className="btn-primary px-12 py-4 text-lg mb-4"
+                      className="btn-primary px-6 md:px-12 py-4 text-base md:text-lg mb-4"
                     >
                       Schedule My Strategy Call →
                     </Button>
